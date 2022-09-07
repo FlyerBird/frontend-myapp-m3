@@ -2,7 +2,7 @@
 
 ## Description
 
-This application is called XXX. It is used for ...
+This application is called 'funRide'. It is used for acquire the best surfskates on the market.
 
 > Add a picture (logo, design, actual screen, gif, etc, whichever you prefer.)
 ![](picture.png)
