@@ -1,7 +1,10 @@
-import React from 'react'
+import React from 'react';
+import AllProducts from './AllProducts';
 
 export default function Home() {
   return (
-    <div>Home</div>
+    <div>
+      <AllProducts />
+    </div>
   )
 }

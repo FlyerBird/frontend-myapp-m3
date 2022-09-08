@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 export default function CreateProduct() {
+  const storedToken = localStorage.getItem('authToken');
   const navigate = useNavigate();
   const [product, setProduct] = useState({
     title: '',
@@ -24,8 +25,7 @@ export default function CreateProduct() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const newProduct = await axios.post('http://localhost:8000/api/v1/product', product);
-      //Not sure from whre the `/movie` is coming in the line below
+      const newProduct = await axios.post('http://localhost:8000/api/v1/product', product, { headers: { Authorization: `Bearer ${storedToken}` } } );
       navigate(`/product/${newProduct.data.data._id}`)
     } catch (error) {
       console.error(error);

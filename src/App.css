@@ -1,3 +1,15 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .selected {
   color: red;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

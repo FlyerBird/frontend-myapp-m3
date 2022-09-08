@@ -9,6 +9,8 @@ import Login from './views/auth/Login';
 import PrivateView from './views/PrivateView';
 import IsPrivate from './components/IsPrivate';
 import CreateProduct from './views/CreateProduct';
+import Product from './views/Product';
+import AllProducts from './views/AllProducts';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/create-product" element={<CreateProduct />} />
+        <Route path="/product/:id" element={<Product />} />
+        <Route path='/product' element={<AllProducts />} />
         <Route path="/private" element={<IsPrivate><PrivateView/></IsPrivate>}/>
         <Route path="*" element={<ErrorPage />} />
       </Routes>
