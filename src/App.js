@@ -9,6 +9,7 @@ import Login from './views/auth/Login';
 import CreateProduct from './views/CreateProduct';
 import ProductDetail from './views/ProductDetail';
 import AllProducts from './views/AllProducts';
+import EditUser from './views/EditUser';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/user" element={<EditUser />}/>
         <Route path="/create-product" element={<CreateProduct />} />
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path='/product' element={<AllProducts />} />
