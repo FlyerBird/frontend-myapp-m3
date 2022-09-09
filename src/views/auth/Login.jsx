@@ -36,14 +36,18 @@ export default function Login() {
   }
 
   return (
-    <div>
+    <div className='login'>
       <form onSubmit={handleSubmit}>
+      <div className='loginSections'>
         <label>Email</label>
         <input required type="email" name="email" value={user.email} onChange={handleChange} />
+      </div>
+      <div className='loginSections'>
         <label>Password</label>
         <input required type="password" name="password" value={user.password} onChange={handleChange} />
+      </div>
         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-        <button type="submit">Log in </button>
+        <button className='loginButton' type="submit">Log in </button>
       </form>
     </div>
   )

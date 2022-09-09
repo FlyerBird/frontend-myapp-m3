@@ -61,7 +61,7 @@ export default function Signup() {
         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
       </div>
         
-        <button type="submit">Register</button>
+        <button className='registerButton' type="submit">REGISTER</button>
       </form>
     </div>
   )

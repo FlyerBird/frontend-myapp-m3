@@ -23,7 +23,7 @@ export default function AllProducts() {
 
   return (
     <div className='allProducs'>
-        {!products && <p>Loading...</p>}
+        <button onClick={() => navigate(-1)}>Go Back</button>
         {products && products.map(product => {
             return (
                 <div className='eachProduct' key={product._id} >
@@ -39,10 +39,15 @@ export default function AllProducts() {
                 </Link>
                 <button onClick={() => navigate(`/product/${product._id}`)}>Details</button>
                 <button>Carrito</button>
-                <button onClick={() => navigate(-1)}>Go Back</button>
                 </div>
             )
       })}
+      {!products && 
+        <div className='loading'>
+            <p>Loading...</p>
+            <img className='loadingGif' src='https://media2.giphy.com/media/dyAf7IKSw1IMXd0gSj/giphy.gif?cid=6c09b952ulpnr5r5wb0hvlxqxo9lkfn3sn5y2xemrxo8hvc1&rid=giphy.gif&ct=s' alt='loadingGif'/> 
+        </div>}
+
     </div>
   )
 }
