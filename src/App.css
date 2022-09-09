@@ -4,12 +4,42 @@
   padding: 0;
 }
 
-.selected {
-  color: red;
+
+/********** NAVBAR ***********/
+.navbar{
+  display: flex;
+  background-color: black;
+  justify-content: space-around;
+  position: fixed;
+  width:100%;
+  bottom: 0%;
+  height: 2.8rem;
+  align-items: center;
 }
 
-.App {
+.navbar a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.navbar a.selected {
+  color: #F7B84B;
+}
+
+
+/********** HOME ***********/
+.mainBoxHome {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+/********** SIGN UP ***********/
+.signUp form{
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+  gap: 1rem;
+}
+

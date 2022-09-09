@@ -22,7 +22,7 @@ export default function AllProducts() {
 
 
   return (
-    <div>
+    <div className='allProducs'>
         {!products && <p>Loading...</p>}
         {products && products.map(product => {
             return (
@@ -39,6 +39,7 @@ export default function AllProducts() {
                 </Link>
                 <button onClick={() => navigate(`/product/${product._id}`)}>Details</button>
                 <button>Carrito</button>
+                <button onClick={() => navigate(-1)}>Go Back</button>
                 </div>
             )
       })}

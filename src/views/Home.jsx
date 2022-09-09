@@ -3,7 +3,7 @@ import AllProducts from './AllProducts';
 
 export default function Home() {
   return (
-    <div>
+    <div className='mainBoxHome'>
       <AllProducts />
     </div>
   )

@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App">
       <Toaster/>
-      <Navbar />
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
@@ -27,6 +27,7 @@ function App() {
         <Route path="/private" element={<IsPrivate><PrivateView/></IsPrivate>}/>
         <Route path="*" element={<ErrorPage />} />
       </Routes>
+      <Navbar />
     </div>
   );
 }

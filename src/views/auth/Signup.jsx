@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, } from 'react-router-dom';
 import axios from 'axios';
 
 export default function Signup() {
@@ -41,7 +41,7 @@ export default function Signup() {
   }
 
   return (
-    <div>
+    <div className='signUp'>
       <form onSubmit={handleSubmit}>
         <label>Username</label>
         <input required type="text" name="username" value={user.username} onChange={handleChange} />
