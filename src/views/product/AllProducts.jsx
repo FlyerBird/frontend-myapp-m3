@@ -22,7 +22,6 @@ export default function AllProducts() {
 
   return (
     <div className='allProducs'>
-        <button onClick={() => navigate(-1)}>Go Back</button>
         {products && products.map(product => {
             return (
                 <div className='eachProduct' key={product._id} >

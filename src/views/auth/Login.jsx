@@ -37,18 +37,22 @@ export default function Login() {
 
   return (
     <div className='login'>
+      <div className='headerSign'>
+      <h1>funRide</h1>
+      </div>
       <form onSubmit={handleSubmit}>
       <div className='loginSections'>
-        <label>Email</label>
-        <input required type="email" name="email" value={user.email} onChange={handleChange} />
+        <input placeholder="Email" required type="email" name="email" value={user.email} onChange={handleChange} />
       </div>
       <div className='loginSections'>
-        <label>Password</label>
-        <input required type="password" name="password" value={user.password} onChange={handleChange} />
+        <input placeholder="Password" required type="password" name="password" value={user.password} onChange={handleChange} />
       </div>
         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
         <button className='loginButton' type="submit">Log in </button>
       </form>
+      <div className='footerSign'>
+        <p>Don't have an account? <b>Sign up</b></p>
+      </div>
     </div>
   )
 }

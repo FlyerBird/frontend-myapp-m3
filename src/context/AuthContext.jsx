@@ -28,7 +28,6 @@ function AuthProviderWrapper(props) {
     if (storedToken) {
       try {
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/me`, { headers: { Authorization: `Bearer ${storedToken}` } });
-        console.log(response.data)
         setIsLoggedIn(true);
         setLoading(false);
         setUser(response.data);
@@ -56,11 +55,6 @@ function AuthProviderWrapper(props) {
   useEffect(() => {
     authenticateUser();
   }, []);
-
-  useEffect(() => {
-    console.log(user);
-    console.log(isAdmin);
-  })
   
   return (
     <AuthContext.Provider value={{ user, isLoggedIn, isLoading, isAdmin, storeToken, authenticateUser, logOutUser }}>

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 export default function Product() {
     const { id } = useParams();
-    
     const [product, setProduct] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getData = async () => {
@@ -23,6 +23,7 @@ export default function Product() {
 
   return (
     <div>
+    <button onClick={() => navigate(-1)}>Go Back</button>
         <h2>Product </h2>
 
         {product && (

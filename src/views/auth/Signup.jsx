@@ -42,31 +42,36 @@ export default function Signup() {
 
   return (
     <div className='signUp'>
+    <div className='headerSign'>
+      <h1>funRide</h1>
+        <div className='subtitleSign'>
+          <h3>Sign up to buy the one </h3>
+          <h3>that better suits you</h3>
+        </div>
+    </div>
       <form onSubmit={handleSubmit}>
       <div className='signUpFormSections'>
-        <label>Username</label>
-        <input required type="text" name="username" value={user.username} onChange={handleChange} />
+        <input placeholder="Username" required type="text" name="username" value={user.username} onChange={handleChange} />
       </div>
       <div className='signUpFormSections'>
-        <label>Email</label>
-        <input required type="email" name="email" value={user.email} onChange={handleChange} />
+        <input placeholder="Email" required type="email" name="email" value={user.email} onChange={handleChange} />
       </div>
       <div className='signUpFormSections'>
-        <label>Password</label>
-        <input required type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value) } />
+        <input placeholder="Password" required type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value) } />
       </div>
       <div className='signUpFormSections'>
-        <label>Repeat the password</label>
-        <input required type="password" name="passwordControl" value={passwordControl} onChange={(e) => setPasswordControl(e.target.value)} />
+        <input placeholder="Repeat password" required type="password" name="passwordControl" value={passwordControl} onChange={(e) => setPasswordControl(e.target.value)} />
         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
       </div>
       <div className='signUpFormSections'>
-      <label>Add an Image</label>
-      <input type="text" name="image" placeholder="Image" value={user.imageProfile} onChange={handleChange} />
+      <input placeholder="Profile image (optional)" type="text" name="image" value={user.imageProfile} onChange={handleChange} />
       </div>
-        
-        <button className='registerButton' type="submit">REGISTER</button>
+        <button className='registerButton' type="submit">Sign up</button>
       </form>
+      <div className='footerSign'>
+        <p>By signing up, you agree to our</p>
+        <p><b>Terms</b> & <b>Privacy</b></p>
+      </div>
     </div>
   )
 }
