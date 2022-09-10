@@ -60,6 +60,10 @@ export default function Signup() {
         <input required type="password" name="passwordControl" value={passwordControl} onChange={(e) => setPasswordControl(e.target.value)} />
         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
       </div>
+      <div className='signUpFormSections'>
+      <label>Add an Image</label>
+      <input type="text" name="image" placeholder="Image" value={user.imageProfile} onChange={handleChange} />
+      </div>
         
         <button className='registerButton' type="submit">REGISTER</button>
       </form>

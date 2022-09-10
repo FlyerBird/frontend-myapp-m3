@@ -6,10 +6,10 @@ import Navbar from './components/Navbar';
 import ErrorPage from './views/ErrorPage';
 import Signup from './views/auth/Signup';
 import Login from './views/auth/Login';
-import CreateProduct from './views/CreateProduct';
-import ProductDetail from './views/ProductDetail';
-import AllProducts from './views/AllProducts';
-import EditUser from './views/EditUser';
+import CreateProduct from './views/product/CreateProduct';
+import ProductDetail from './views/product/ProductDetail';
+import AllProducts from './views/product/AllProducts';
+import UserProfile from './views/user/UserProfile';
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/user" element={<EditUser />}/>
+        <Route path="/user" element={<UserProfile />}/>
         <Route path="/create-product" element={<CreateProduct />} />
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path='/product' element={<AllProducts />} />

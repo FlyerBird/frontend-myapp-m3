@@ -46,7 +46,8 @@
   font-size: 1.2rem;
 }
 
-.navbar a.selected {
+.navbar a.selected,
+.navbar a.selected p {
   color: #F7B84B;
 }
 

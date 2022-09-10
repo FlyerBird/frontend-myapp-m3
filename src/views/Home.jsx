@@ -1,5 +1,5 @@
 import React from 'react';
-import AllProducts from './AllProducts';
+import AllProducts from './product/AllProducts';
 import Header from '../components/Header';
 
 export default function Home() {
