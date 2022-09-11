@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function AllProducts() {
     const [products, setProducts] = useState(null);
-    const navigate = useNavigate();
-
+   
     useEffect(() => {
         const getData = async () => {
             try {
@@ -21,22 +22,24 @@ export default function AllProducts() {
 
 
   return (
-    <div className='allProducs'>
+    <div className='allProducts'>
         {products && products.map(product => {
             return (
                 <div className='eachProduct' key={product._id} >
-                <Link to={`/product/${product._id}`}>
-                <div className='imgProduct'>
-                    <img width={200} src={product.images} alt={product.title}/>
-                </div>
-                <div className='textProduct'>
-                <h2>{product.title}</h2>
-                <p className='productDescription'>{product.description}</p>
-                <p className='productPrice'>{product.price}</p>
-                </div>
-                </Link>
-                <button onClick={() => navigate(`/product/${product._id}`)}>Details</button>
-                <button>Carrito</button>
+                    <Link to={`/product/${product._id}`}>
+                    <div>
+                        <img className='imgProduct' width={200} src={product.images} alt={product.title}/>
+                    </div>
+                    <div className='textProduct'>
+                        <h3>{product.title}</h3>
+                        <p className='productPrice'>{product.price} €</p>
+                        <p className='productDescription'>{product.description}</p>
+                    <div className='linkPro'>
+                        <Link to={`/product/${product._id}`}><b><FontAwesomeIcon icon={faEye} /> Details</b></Link>
+                        <Link to={`/login`}><b><FontAwesomeIcon icon={faCartArrowDown} /> Buy</b></Link>
+                    </div>
+                    </div>
+                    </Link>
                 </div>
             )
       })}
