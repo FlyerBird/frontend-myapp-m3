@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState, useContext } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 export default function Login() {
   const { storeToken, authenticateUser } = useContext(AuthContext);
@@ -51,7 +51,7 @@ export default function Login() {
         <button className='loginButton' type="submit">Log in </button>
       </form>
       <div className='footerSign'>
-        <p>Don't have an account? <b>Sign up</b></p>
+        <p>Don't have an account? <Link to={'/signup'}><b>Sign up</b></Link></p>
       </div>
     </div>
   )

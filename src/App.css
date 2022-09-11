@@ -131,6 +131,11 @@
   text-align: center;
 }
 
+.footerSign p a{
+  text-decoration: none;
+  color: black;
+}
+
 
 /**********ALL PRODUCTS***********/
 .allProducts{
@@ -171,9 +176,12 @@ text-decoration: none;
 }
 
 .linkPro{
+  background-color: #F7B84B;
   display: flex;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
   justify-content: space-between;
-  margin-top: 0.5rem;
 }
 
 .linkPro a{

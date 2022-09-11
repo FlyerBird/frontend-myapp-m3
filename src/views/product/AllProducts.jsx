@@ -34,12 +34,12 @@ export default function AllProducts() {
                         <h3>{product.title}</h3>
                         <p className='productPrice'>{product.price} €</p>
                         <p className='productDescription'>{product.description}</p>
+                    </div>
+                    </Link>
                     <div className='linkPro'>
                         <Link to={`/product/${product._id}`}><b><FontAwesomeIcon icon={faEye} /> Details</b></Link>
                         <Link to={`/login`}><b><FontAwesomeIcon icon={faCartArrowDown} /> Buy</b></Link>
                     </div>
-                    </div>
-                    </Link>
                 </div>
             )
       })}
