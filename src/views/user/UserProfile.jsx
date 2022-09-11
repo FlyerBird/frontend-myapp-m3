@@ -1,13 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import TopNav from '../../components/TopNav';
+
+
 
 export default function EditUser() {
-    const { isLoggedIn, logOutUser } = useContext(AuthContext);
+    const { isLoggedIn, logOutUser, } = useContext(AuthContext);
     const storedToken = localStorage.getItem('authToken')
     const [user, setUser] = useState(undefined);
     const navigate = useNavigate();
+    const { id } = useParams();
 
     useEffect(() => {
         const getData = async () => {
@@ -21,9 +25,32 @@ export default function EditUser() {
         getData();
       }, []);
 
+      useEffect(() => {
+        const getData = async () => {
+          try {
+            const response = await axios.get(`http://localhost:8000/api/v1/user/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } });
+            console.log(response);
+            setUser(response.data)
+          } catch (error) {
+            console.error(error);
+          }
+        }
+        getData();
+      }, [id]);
+
+      const handleDelete = async () => {
+        try {
+          await axios.delete(`http://localhost:8000/api/v1/user/${id}`, user);
+          navigate("/");
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
   
   return (
     <div>
+    <TopNav />
       <button onClick={() => navigate(-1)}>Go Back</button>
       {!user && <p>Loading...</p>}
       {user && (
@@ -36,6 +63,7 @@ export default function EditUser() {
       ) }
       
       {isLoggedIn && <button onClick={() => logOutUser()}>Log out</button>}
+      <button onClick={handleDelete}>Delete account</button>
     </div>
   )
 }

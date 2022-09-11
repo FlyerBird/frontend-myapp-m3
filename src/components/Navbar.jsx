@@ -13,7 +13,7 @@ export default function Navbar() {
         {user && <NavLink className={(element) => element.isActive ? 'selected' : ''} to="/user"><p className='helloUser'><FontAwesomeIcon icon={faHandPeace} />{user.username}</p> </NavLink>}
         {!isLoggedIn && <NavLink className={(element) => element.isActive ? 'selected' : ''} to="/signup"><FontAwesomeIcon icon={faUserPlus} /></NavLink>}
         {!isLoggedIn && <NavLink className={(element) => element.isActive ? 'selected' : ''} to="/login"><FontAwesomeIcon icon={faRightToBracket} /> </NavLink>}
-        {isLoggedIn && <NavLink className={(element) => element.isActive ? 'selected' : ''} to="/"><FontAwesomeIcon icon={faCartShopping} /> </NavLink>}
+        {isLoggedIn && !isAdmin && <NavLink className={(element) => element.isActive ? 'selected' : ''} to="/"><FontAwesomeIcon icon={faCartShopping} /> </NavLink>}
         {isLoggedIn && isAdmin && <NavLink className={(element) => element.isActive ? 'selected' : ''} to="/create-product"><FontAwesomeIcon icon={faGear} />Tools</NavLink>}
     </div>
   )

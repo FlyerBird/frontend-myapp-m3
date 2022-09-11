@@ -1,13 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
-
+import { faEye, faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
+/*import { AuthContext } from '../context/AuthContext';*/
 
 export default function AllProducts() {
     const [products, setProducts] = useState(null);
-   
+    /*const { isLoggedIn, isAdmin } = useContext(AuthContext);*/
+
     useEffect(() => {
         const getData = async () => {
             try {
@@ -48,7 +49,6 @@ export default function AllProducts() {
             <p>Loading...</p>
             <img className='loadingGif' src='https://media2.giphy.com/media/dyAf7IKSw1IMXd0gSj/giphy.gif?cid=6c09b952ulpnr5r5wb0hvlxqxo9lkfn3sn5y2xemrxo8hvc1&rid=giphy.gif&ct=s' alt='loadingGif'/> 
         </div>}
-
     </div>
   )
 }
