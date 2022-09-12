@@ -51,6 +51,62 @@
   color: #F7B84B;
 }
 
+/********** TOPNAV ***********/
+.topNav{
+  display: flex;
+  background-color: black;
+  width: 100%;
+  height: 2.8rem;
+}
+
+.topNav .leftTopNav{
+  flex: 50%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.topNav .leftTopNav h1{
+  color: white;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-style: oblique;
+  font-size: 1.5rem;
+}
+
+.topNav .rightTopNav{
+  flex: 50%;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.topNav .rightTopNav .links{
+  max-height: 2.8rem;
+}
+
+.topNav .rightTopNav .links a{
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+.topNav .rightTopNav button{
+  display: none;
+  margin-right: 1rem;
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 1rem;
+}
+
+.topNav .rightTopNav #hidden{
+  display: flex;
+}
+
+
 /********** HELLO USER ***********/
 .helloUser{
   color: white
@@ -67,7 +123,7 @@
 /********** SIGN UP & LOGIN***********/
 .signUp, .login{
   background-color: #F7B84B;
-  height: 95vh;
+  height: 100vh;
   padding-top: 4rem;
   display: flex;
   flex-direction: column;
@@ -195,4 +251,45 @@ text-decoration: none;
 .loadingGif{
   height:auto;
   padding-top: 8rem;
+}
+
+/**********MEDIA QUERIES***********/
+@media only screen and (max-width: 850px) {
+  .topNav .rightTopNav .links a{
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .topNav .rightTopNav .links a{
+    font-size: 0.8rem;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .topNav .rightTopNav button{
+    display: flex;
+  }
+
+  .topNav .rightTopNav .links{
+    display: none;
+  }
+
+  .topNav .rightTopNav #hidden{
+    position: absolute;
+    left: 0rem;
+    top: 2.8rem;
+    height: 10rem;
+    max-height: 10rem;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .topNav .rightTopNav #hidden a{
+    margin: 1rem;
+    font-size: 1rem;
+  }
 }

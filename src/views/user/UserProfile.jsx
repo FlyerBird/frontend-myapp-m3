@@ -3,6 +3,7 @@ import { AuthContext } from '../../context/AuthContext';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import TopNav from '../../components/TopNav';
+import { Link } from 'react-router-dom';
 
 
 
@@ -63,6 +64,7 @@ export default function EditUser() {
       ) }
       
       {isLoggedIn && <button onClick={() => logOutUser()}>Log out</button>}
+      <Link to={'/'} onClick={() => logOutUser()}>Log out</Link>
       <button onClick={handleDelete}>Delete account</button>
     </div>
   )
