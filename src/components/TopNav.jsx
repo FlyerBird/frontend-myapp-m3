@@ -1,11 +1,15 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faX } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function TopNav() {
  const [showLinks, setShowLinks] = useState(false); 
+
+ const handleNavbar = () => {
+  setShowLinks(showLinks => !showLinks);
+};
   
   return (
     <div className='topNav'>
@@ -17,7 +21,7 @@ export default function TopNav() {
         <Link to={''}>Favorites</Link>
         <Link to={''}>Log out</Link>
       </div>
-      <button onClick={() => setShowLinks(!showLinks)}> <FontAwesomeIcon icon={faBars} /></button>
+      <button onClick={handleNavbar}> {!showLinks ? <FontAwesomeIcon icon={faBars} /> : <FontAwesomeIcon icon={faX} />}</button>
       </div>
     </div>
   )

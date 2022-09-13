@@ -31,7 +31,7 @@ export default function EditUser() {
           try {
             const response = await axios.get(`http://localhost:8000/api/v1/user/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } });
             console.log(response);
-            setUser(response.data)
+            return setUser(response.data)
           } catch (error) {
             console.error(error);
           }
@@ -41,7 +41,7 @@ export default function EditUser() {
 
       const handleDelete = async () => {
         try {
-          await axios.delete(`http://localhost:8000/api/v1/user/${id}`, user);
+          await axios.delete(`http://localhost:8000/api/v1/user/${id}`, user, { headers: { Authorization: `Bearer ${storedToken}` } });
           navigate("/");
         } catch (error) {
           console.error(error);

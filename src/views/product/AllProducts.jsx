@@ -9,6 +9,7 @@ export default function AllProducts() {
     const [products, setProducts] = useState(null);
     /*const { isLoggedIn, isAdmin } = useContext(AuthContext);*/
 
+
     useEffect(() => {
         const getData = async () => {
             try {
@@ -44,6 +45,7 @@ export default function AllProducts() {
                 </div>
             )
       })}
+
       {!products && 
         <div className='loading'>
             <p>Loading...</p>

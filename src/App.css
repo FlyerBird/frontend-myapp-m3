@@ -27,6 +27,16 @@
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
+.subHeader{
+  display: flex;
+  justify-content: space-around;
+  background-color: #494949;
+  padding: 0.5rem;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+}
+
 
 /********** NAVBAR ***********/
 .navbar{
@@ -99,7 +109,7 @@
   background-color: transparent;
   border: none;
   color: white;
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
 .topNav .rightTopNav #hidden{
@@ -116,8 +126,14 @@
 .mainBoxHome {
   background-color: #F2F2F2;
   height:auto;
-  padding-top: 11rem;
+  padding-top: 10rem;
   padding-bottom: 4rem;
+}
+
+.footer{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 /********** SIGN UP & LOGIN***********/
@@ -200,8 +216,8 @@
   gap: 4rem;
   justify-content: center;
   align-content: center;
-  margin-top: 2rem;
-  margin-bottom: 8rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
 }
 
 .eachProduct{
