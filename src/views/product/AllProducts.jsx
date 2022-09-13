@@ -2,7 +2,7 @@ import React, {useEffect, useState, useContext} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faCartArrowDown, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 //import { AuthContext } from '../context/AuthContext';
 
@@ -37,10 +37,16 @@ export default function AllProducts() {
       }
       
   return (
-    <div className='allProducts'>
-      <div className='searchBar'>
-          <input type="text" value={searchProduct} placeholder="What are you looking for?" onChange={handleSearch} />
+    <div className='searchAndProducts'>
+       <div className='searchBar'>
+       <div>
+       <FontAwesomeIcon className='iconGlass' icon={faMagnifyingGlass} />
+       <input type="text" value={searchProduct} placeholder="What are you looking for?" onChange={handleSearch} />
+       </div>
+          
         </div>
+    <div className='allProducts'>
+   
         {filteredProducts && filteredProducts.map(product => {
             return (
                 <div className='eachProduct' key={product._id} >
@@ -67,6 +73,7 @@ export default function AllProducts() {
             <p>Loading...</p>
             <img className='loadingGif' src='https://media2.giphy.com/media/dyAf7IKSw1IMXd0gSj/giphy.gif?cid=6c09b952ulpnr5r5wb0hvlxqxo9lkfn3sn5y2xemrxo8hvc1&rid=giphy.gif&ct=s' alt='loadingGif'/> 
         </div>}
+    </div>
     </div>
   )
 }

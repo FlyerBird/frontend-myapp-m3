@@ -23,7 +23,6 @@ export default function Home() {
       <div className='subHeader'>
         <h5 onClick={() => scrollToSection(about)} className="linkAbout">About</h5>
         <h5 onClick={() => scrollToSection(about)} className="linkAbout">Contact</h5>
-        
       </div>
       <AllProducts />
       <div className='footer'>

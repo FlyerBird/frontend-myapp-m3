@@ -44,7 +44,7 @@
 .subHeader{
   display: flex;
   justify-content: space-around;
-  background-color: #494949;
+  background-color: black;
   padding: 0.5rem;
   align-items: center;
   position: fixed;
@@ -233,11 +233,46 @@
 
 
 /**********ALL PRODUCTS***********/
+.searchAndProducts{
+margin-top: 2.5rem;
+display: grid;
+}
+
+.searchBar{
+  display: grid;
+  position: fixed;
+  width: 100%;
+  
+}
+
+.searchBar div input{
+  width: 16rem;
+  background-color:#F7B84B;
+  border: none;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  
+}
+
+.searchBar div{
+  
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+  background-color:#F7B84B;
+  padding:0.5rem;
+  border-radius: 1rem;
+}
+
+.iconGlass{
+  color: #494949;
+}
+
 .allProducts{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(16rem, 20rem));
   gap: 4rem;
-  justify-content: center;
+  justify-content: center; 
   align-content: center;
   margin-top: 3rem;
   margin-bottom: 4rem;
@@ -250,6 +285,10 @@
 .searchBar {
  display: flex;
  justify-content: center;
+}
+
+#searchBarPro{
+  background-color: #2dcc25;
 }
 
 .eachProduct a{
