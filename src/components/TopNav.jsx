@@ -14,7 +14,7 @@ export default function TopNav() {
   return (
     <div className='topNav'>
       <div className='leftTopNav'>
-       <h1>funRide</h1>
+       <Link to={'/'}><h1>funRide</h1></Link>
       </div>
       <div className='rightTopNav'>
       <div className='links' id={showLinks ? "hidden" : ""}>

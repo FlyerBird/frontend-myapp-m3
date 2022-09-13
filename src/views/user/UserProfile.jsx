@@ -2,19 +2,20 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import TopNav from '../../components/TopNav';
 import { Link } from 'react-router-dom';
 
 
 
 export default function UserProfile() {
-    const { logOutUser , isLoggedIn } = useContext(AuthContext);
+    const { logOutUser, removeToken, isLoggedIn } = useContext(AuthContext);
     const storedToken = localStorage.getItem('authToken')
     const navigate = useNavigate();
-    const { id } = useParams();
 
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState("");
+    
+  
     /*
     const [userData, setUserData] = useState({
       username: user.username,
@@ -40,7 +41,7 @@ export default function UserProfile() {
       useEffect(() => {
         const getData = async () => {
           try {
-            const response = await axios.get(`http://localhost:8000/api/v1/user/${id}`);
+            const response = await axios.get(`http://localhost:8000/api/v1/user/${user._id}`);
             console.log(response);
             return setUser(response.data.data)
           } catch (error) {
@@ -48,18 +49,19 @@ export default function UserProfile() {
           }
         }
         getData();
-      }, [id]);
+      }, []);
 
       const handleDelete = async () => {
         try {
-          await axios.delete(`http://localhost:8000/api/v1/user/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } });
+          await axios.delete(`http://localhost:8000/api/v1/user/${user._id}`, { headers: { Authorization: `Bearer ${storedToken}` } });
           toast.success('Account deleted successfully')
+          removeToken();
           navigate("/");
         } catch (error) {
           console.error(error);
         }
       };
-    
+
       
       /*
 

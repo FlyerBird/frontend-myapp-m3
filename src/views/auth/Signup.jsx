@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, } from 'react-router-dom';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 export default function Signup() {
   const [user, setUser] = useState({
     username: '',
-    email: ''
+    email: '',
+    imageProfile: ''
   })
   const [password, setPassword] = useState('');
   const [passwordControl, setPasswordControl] = useState('');
   const [errorMessage, setErrorMessage] = useState(undefined);
   const navigate = useNavigate();
+  //const storedToken = localStorage.getItem('authToken');
 
   const handleChange = (e) => {
     setUser(prev => {
@@ -19,7 +22,32 @@ export default function Signup() {
         [e.target.name]: e.target.value
       }
     })
-  }
+  };
+
+  const handleFileUpload = async(e) => {
+    const uploadData = new FormData();
+    uploadData.append("imageProfile", e.target.files[0]);
+    try {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/upload`, uploadData);
+      console.log(response.data.fileUrl);
+
+      setUser(prev => {
+        return {
+          ...prev,
+          imageProfile: response.data.fileUrl
+        }
+      })
+
+      // In case of multiple file upload
+      // setImageUrls(prev => [...prev, response.data.fileUrl]);
+      // setImgForUser(prev => [...prev, e.target.files[0].name]);
+
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
 
   useEffect(() => {
     if (password !== passwordControl) {
@@ -30,10 +58,32 @@ export default function Signup() {
     // eslint-disable-next-line
   }, [passwordControl])
 
+/*
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, { username: user.username, email: user.email, password });
+      navigate('/login');
+    } catch (error) {
+      setErrorMessage(error.response.data.error)
+    }
+  }
+  */
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // In case of multiple file upload
+    // const projectToSend = {
+    //   title: project.title,
+    //   description: project.description,
+    //   imageUrls: imageUrls
+    // }
+
+    try {
+      await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, { username: user.username, email: user.email, imageProfile: user.imageProfile, password });
+      //await axios.post('http://localhost:8000/api/v1/auth/signup', user, { headers: { Authorization: `Bearer ${storedToken}` } });
+      toast.success('Profile created successfully')
       navigate('/login');
     } catch (error) {
       setErrorMessage(error.response.data.error)
@@ -64,7 +114,7 @@ export default function Signup() {
         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
       </div>
       <div className='signUpFormSections'>
-      <input placeholder="Profile image (optional)" type="text" name="image" value={user.imageProfile} onChange={handleChange} />
+      <input type="file" onChange={(e) => handleFileUpload(e)} />
       </div>
         <button className='registerButton' type="submit">Sign up</button>
       </form>

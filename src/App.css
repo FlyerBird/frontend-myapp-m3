@@ -16,15 +16,29 @@
   background-position: center;
   display: flex;
   justify-content: center;
-  
+  flex-direction: column;
+  align-content: center;
 }
 
 .headerPic h1{
   display: flex;
   justify-content: center;
-  margin-top: 2rem;
   color: white;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+  text-shadow: 0 5px 0 rgba(10, 10, 10, 0.4);
+  align-content: center;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-style: oblique;
+  font-size: 3rem;
+}
+
+.headerPic h3{
+  display: flex;
+  justify-content: center;
+  color: white;
+  text-shadow: 0 5px 0 rgba(10, 10, 10, 0.4);
+  align-content: center;
+  color: #F7B84B;
+  
 }
 
 .subHeader{
@@ -35,6 +49,10 @@
   align-items: center;
   position: fixed;
   width: 100%;
+}
+
+.subHeader h5{
+  color: #F2F2F2;
 }
 
 
@@ -77,11 +95,16 @@
   margin-left: 1rem;
 }
 
+.topNav .leftTopNav a{
+  text-decoration: none;
+}
+
 .topNav .leftTopNav h1{
   color: white;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-style: oblique;
   font-size: 1.5rem;
+  
 }
 
 .topNav .rightTopNav{
@@ -216,12 +239,17 @@
   gap: 4rem;
   justify-content: center;
   align-content: center;
-  margin-top: 4rem;
+  margin-top: 3rem;
   margin-bottom: 4rem;
 }
 
 .eachProduct{
   box-shadow: 0 2px 12px #494949;
+}
+
+.searchBar {
+ display: flex;
+ justify-content: center;
 }
 
 .eachProduct a{

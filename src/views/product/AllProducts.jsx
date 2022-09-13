@@ -3,18 +3,21 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
-/*import { AuthContext } from '../context/AuthContext';*/
+
+//import { AuthContext } from '../context/AuthContext';
 
 export default function AllProducts() {
     const [products, setProducts] = useState(null);
-    /*const { isLoggedIn, isAdmin } = useContext(AuthContext);*/
-
+    
+    const [searchProduct, setSearchProduct] = useState("");
+    const [filteredProducts, setfilteredProducts] = useState(null);
 
     useEffect(() => {
         const getData = async () => {
             try {
                 const response = await axios.get('http://localhost:8000/api/v1/product');
                 setProducts(response.data.data);
+                setfilteredProducts(response.data.data);
             } catch (error) {
                 console.log(error)
             }
@@ -22,10 +25,23 @@ export default function AllProducts() {
         getData();
     }, []);
 
-
+    const handleSearch = (e) => {
+        console.log(e.target.value)
+        setSearchProduct(e.target.value)
+        if (e.target.value === '') {
+            setfilteredProducts(products)
+        } else {
+          const filtered = products.filter(el => el.title.toLowerCase().includes((e.target.value)))
+          setfilteredProducts(filtered)
+        }
+      }
+      
   return (
     <div className='allProducts'>
-        {products && products.map(product => {
+      <div className='searchBar'>
+          <input type="text" value={searchProduct} placeholder="What are you looking for?" onChange={handleSearch} />
+        </div>
+        {filteredProducts && filteredProducts.map(product => {
             return (
                 <div className='eachProduct' key={product._id} >
                     <Link to={`/product/${product._id}`}>

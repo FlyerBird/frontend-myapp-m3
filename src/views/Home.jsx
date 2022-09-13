@@ -1,6 +1,5 @@
 import React from 'react';
 import AllProducts from './product/AllProducts';
-import SearchBar from '../components/SearchBar';
 import { useRef } from "react";
 
 export default function Home() {
@@ -17,13 +16,14 @@ export default function Home() {
   return (
     <div>
       <div className='headerPic'>
-       <h1>SURFSKATES</h1>
+       <h1>funRide</h1>
+       <h3>SURFSKATES</h3>
       </div>
       <div className='mainBoxHome'>
       <div className='subHeader'>
-        <h4 onClick={() => scrollToSection(about)} className="linkAbout">About</h4>
-        <h4 onClick={() => scrollToSection(about)} className="linkAbout">Contact</h4>
-        <SearchBar />
+        <h5 onClick={() => scrollToSection(about)} className="linkAbout">About</h5>
+        <h5 onClick={() => scrollToSection(about)} className="linkAbout">Contact</h5>
+        
       </div>
       <AllProducts />
       <div className='footer'>
