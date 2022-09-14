@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+//import { AuthContext } from '/src/context/AuthContext'
+//import { AuthContext } from '../context/AuthContext';
 
 export default function Product() {
+  const storedToken = localStorage.getItem('authToken')
     const { id } = useParams();
     const [product, setProduct] = useState(null);
     const navigate = useNavigate();
+   // const { isLoggedIn, isAdmin } = useContext(AuthContext);
 
     useEffect(() => {
         const getData = async () => {
@@ -19,6 +23,15 @@ export default function Product() {
         }
         getData();
       }, [id]);
+
+    const handleDelete = async () => {
+        try {
+          await axios.delete(`http://localhost:8000/api/v1/product/${id}`, product, { headers: { Authorization: `Bearer ${storedToken}` } });
+          navigate("/");
+        } catch (error) {
+          console.error(error);
+        }
+      };
 
 
   return (
@@ -36,7 +49,7 @@ export default function Product() {
           <p>Details: {product.details}</p>
           <p>Price: {product.price}</p>
           
-          
+         <button onClick={handleDelete}>Delete product</button>
         </div>
         )}
       {!product && <p>Product not found</p>}
