@@ -242,30 +242,33 @@ display: grid;
   display: grid;
   position: fixed;
   width: 100%;
+  gap: 1rem;
   
 }
 
 .searchBar div input{
   width: 16rem;
-  background-color:#F7B84B;
+  background-color:#aaaaaa;
   border: none;
   margin-left: 1rem;
   margin-right: 1rem;
   
+  
 }
 
-.searchBar div{
+.searchBar .search{
   
   display: flex;
   justify-content:flex-start;
   align-items: center;
-  background-color:#F7B84B;
+  background-color:#aaaaaa;
   padding:0.5rem;
   border-radius: 1rem;
+  width: 14rem
 }
 
 .iconGlass{
-  color: #494949;
+  color:#F7B84B;
 }
 
 .allProducts{

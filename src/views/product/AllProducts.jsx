@@ -1,10 +1,8 @@
-import React, {useEffect, useState, useContext} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faCartArrowDown, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-
-//import { AuthContext } from '../context/AuthContext';
 
 export default function AllProducts() {
     const [products, setProducts] = useState(null);
@@ -31,20 +29,29 @@ export default function AllProducts() {
         if (e.target.value === '') {
             setfilteredProducts(products)
         } else {
-          const filtered = products.filter(el => el.title.toLowerCase().includes((e.target.value)))
+          const filtered = products.filter(el => el.title.toLowerCase().includes((e.target.value).toLocaleLowerCase()))
           setfilteredProducts(filtered)
         }
-      }
+      };
+
+      const handleSortByUrgency = () => {
+        const ordered = [...products].sort((a, b) => b.price - a.price);
+        console.log(ordered)
+        setProducts(ordered)
+       }
       
   return (
     <div className='searchAndProducts'>
        <div className='searchBar'>
-       <div>
-       <FontAwesomeIcon className='iconGlass' icon={faMagnifyingGlass} />
-       <input type="text" value={searchProduct} placeholder="What are you looking for?" onChange={handleSearch} />
-       </div>
-          
+            <div className='search'>
+             <FontAwesomeIcon className='iconGlass' icon={faMagnifyingGlass} />
+             <input type="text" value={searchProduct} placeholder="What are you looking for?" onChange={handleSearch} />
         </div>
+        <div>
+        <button onClick={handleSortByUrgency}>Sort by price</button>
+        </div>
+       </div>
+
     <div className='allProducts'>
    
         {filteredProducts && filteredProducts.map(product => {
