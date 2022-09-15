@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 export default function DeleteUser() {
-    const { logOutUser } = useContext(AuthContext);
+    const { logOutUser, user } = useContext(AuthContext);
     const navigate = useNavigate();
     const storedToken = localStorage.getItem('authToken');
     
@@ -18,7 +18,7 @@ export default function DeleteUser() {
 
     const handleDelete = async () => {
       try {
-        await axios.delete(`http://localhost:8000/api/v1/user/${id}`,  { headers: { Authorization: `Bearer ${storedToken}` } });
+        await axios.delete(`http://localhost:8000/api/v1/user/${user._id}`,  { headers: { Authorization: `Bearer ${storedToken}` } });
         toast.success('User deleted')
         navigate("/");
         removeToken();

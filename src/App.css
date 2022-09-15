@@ -277,6 +277,10 @@ margin-top: 2.5rem;
 display: grid;
 }
 
+.searchAndProducts .sort #hidden{
+  display: flex;
+}
+
 .searchBar{
   display: grid;
   position: fixed;
@@ -305,6 +309,8 @@ display: grid;
   border-radius: 1rem;
   width: 14rem
 }
+
+
 
 .iconGlass{
   color:#F7B84B;

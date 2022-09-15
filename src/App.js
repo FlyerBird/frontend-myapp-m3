@@ -11,6 +11,8 @@ import ProductDetail from './views/product/ProductDetail';
 import AllProducts from './views/product/AllProducts';
 import UserProfile from './views/user/UserProfile';
 import DeleteUser from './views/user/DeleteUser';
+import EditProduct from './views/product/EditProduct';
+
 
 
 function App() {
@@ -26,6 +28,7 @@ function App() {
         <Route path="/create-product" element={<CreateProduct />} />
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path='/product' element={<AllProducts />} />
+        <Route path='/edit' element={<EditProduct />} />
         <Route path='/delete' element={<DeleteUser />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>

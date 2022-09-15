@@ -29,7 +29,7 @@ export default function CreateProduct() {
     const uploadData = new FormData();
     uploadData.append("image", e.target.files[0]);
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/projects/upload`, uploadData);
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/product/upload`, uploadData);
       console.log(response.data.fileUrl);
 
       setImages(prev => [...prev, response.data.fileUrl]);

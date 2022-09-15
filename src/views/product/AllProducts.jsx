@@ -2,13 +2,20 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faCartArrowDown, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faCartArrowDown, faMagnifyingGlass, faBars, faX } from '@fortawesome/free-solid-svg-icons';
 
 export default function AllProducts() {
     const [products, setProducts] = useState(null);
     
     const [searchProduct, setSearchProduct] = useState("");
     const [filteredProducts, setfilteredProducts] = useState(null);
+
+    const [showLinks, setShowLinks] = useState(false); 
+    
+   
+    const handleSort = () => {
+     setShowLinks(showLinks => !showLinks);
+   };
     
 
     useEffect(() => {
@@ -25,7 +32,6 @@ export default function AllProducts() {
     }, []);
 
     const handleSearch = (e) => {
-        console.log(e.target.value)
         setSearchProduct(e.target.value)
         if (e.target.value === '') {
             setfilteredProducts(products)
@@ -36,9 +42,9 @@ export default function AllProducts() {
       };
 
       const handleSortByPrice = () => {
-        const ordered = [...products.sort((a, b) => b.price - a.price)];
+        const ordered = [...products].sort((a, b) => b.price - a.price);
         console.log(ordered)
-        setProducts(ordered)
+        setfilteredProducts(ordered)
         //setProducts(prevProducts => {
            // console.log(prevProducts)
             //return [...prevProducts.sort((a, b) => b.price - a.price)]
@@ -53,8 +59,11 @@ export default function AllProducts() {
              <FontAwesomeIcon className='iconGlass' icon={faMagnifyingGlass} />
              <input type="text" value={searchProduct} placeholder="What are you looking for?" onChange={handleSearch} />
         </div>
-        <div>
-        <button onClick={handleSortByPrice}>Sort by price</button>
+        <div className='sort'>
+        <div className='sortPrice' id={showLinks ? "hidden" : ""}>
+            <button onClick={handleSortByPrice}>Sort by price</button>
+            <button onClick={handleSort}> {!showLinks ? <FontAwesomeIcon icon={faBars} /> : <FontAwesomeIcon icon={faX} />}</button>
+        </div>
         </div>
        </div>
 
@@ -65,7 +74,7 @@ export default function AllProducts() {
                 <div className='eachProduct' key={product._id} >
                     <Link to={`/product/${product._id}`}>
                     <div>
-                        <img className='imgProduct' width={200} src={product.images} alt={product.title}/>
+                    {Array.isArray(product.images) ? <img className='imgProduct' width="300px" src={product.images[0]} alt={`Pic of ${product.title}`} /> : <img className='imgProduct' width="300px" src={product.images} alt={`Pic of ${product.title}`} />}
                     </div>
                     <div className='textProduct'>
                         <h3>{product.title}</h3>
