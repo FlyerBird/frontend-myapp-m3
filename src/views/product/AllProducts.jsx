@@ -36,9 +36,14 @@ export default function AllProducts() {
       };
 
       const handleSortByPrice = () => {
-        const ordered = [...products].sort((a, b) => b.price - a.price);
+        const ordered = [...products.sort((a, b) => b.price - a.price)];
         console.log(ordered)
         setProducts(ordered)
+        //setProducts(prevProducts => {
+           // console.log(prevProducts)
+            //return [...prevProducts.sort((a, b) => b.price - a.price)]
+        //})
+      
        }
       
   return (

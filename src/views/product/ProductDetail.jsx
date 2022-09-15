@@ -4,7 +4,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLeftLong } from '@fortawesome/free-solid-svg-icons';
-//import { AuthContext } from '/src/context/AuthContext';
+import { AuthContext } from '../../context/AuthContext'
 
 
 export default function Product() {
@@ -12,7 +12,7 @@ export default function Product() {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
     const navigate = useNavigate();
-   // const { isAdmin } = useContext(AuthContext);
+    const { isAdmin } = useContext(AuthContext);
   
 
     useEffect(() => {
@@ -52,7 +52,7 @@ export default function Product() {
           <p>Details: {product.details}</p>
           <p>Price: {product.price}</p>
         <div>
-          <button onClick={handleDelete}>Delete product</button> 
+          {isAdmin&&<button onClick={handleDelete}>Delete product</button> }
         </div>
         </div>
         )}
