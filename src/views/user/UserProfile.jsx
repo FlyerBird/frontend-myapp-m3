@@ -11,14 +11,7 @@ export default function UserProfile() {
     const navigate = useNavigate();
 
     const [user, setUser] = useState("");
-    /*
-    const [userData, setUserData] = useState({
-      username: user.username,
-      email: user.email
-    })
-    */
-
-
+ 
     // GET USER DATA 
     useEffect(() => {
         const getData = async () => {

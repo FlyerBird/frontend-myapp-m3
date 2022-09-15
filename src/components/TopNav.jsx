@@ -2,7 +2,7 @@ import React, {useState, useContext} from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faX } from '@fortawesome/free-solid-svg-icons';
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from '../context/AuthContext'
 
 
 export default function TopNav() {

@@ -9,6 +9,7 @@ export default function AllProducts() {
     
     const [searchProduct, setSearchProduct] = useState("");
     const [filteredProducts, setfilteredProducts] = useState(null);
+    
 
     useEffect(() => {
         const getData = async () => {
@@ -34,7 +35,7 @@ export default function AllProducts() {
         }
       };
 
-      const handleSortByUrgency = () => {
+      const handleSortByPrice = () => {
         const ordered = [...products].sort((a, b) => b.price - a.price);
         console.log(ordered)
         setProducts(ordered)
@@ -48,7 +49,7 @@ export default function AllProducts() {
              <input type="text" value={searchProduct} placeholder="What are you looking for?" onChange={handleSearch} />
         </div>
         <div>
-        <button onClick={handleSortByUrgency}>Sort by price</button>
+        <button onClick={handleSortByPrice}>Sort by price</button>
         </div>
        </div>
 

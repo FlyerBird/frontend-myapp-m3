@@ -1,15 +1,19 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-//import { AuthContext } from '/src/context/AuthContext'
-//import { AuthContext } from '../context/AuthContext';
+import toast from 'react-hot-toast';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLeftLong } from '@fortawesome/free-solid-svg-icons';
+//import { AuthContext } from '/src/context/AuthContext';
+
 
 export default function Product() {
   const storedToken = localStorage.getItem('authToken')
     const { id } = useParams();
     const [product, setProduct] = useState(null);
     const navigate = useNavigate();
-   // const { isLoggedIn, isAdmin } = useContext(AuthContext);
+   // const { isAdmin } = useContext(AuthContext);
+  
 
     useEffect(() => {
         const getData = async () => {
@@ -26,7 +30,8 @@ export default function Product() {
 
     const handleDelete = async () => {
         try {
-          await axios.delete(`http://localhost:8000/api/v1/product/${id}`, product, { headers: { Authorization: `Bearer ${storedToken}` } });
+          await axios.delete(`http://localhost:8000/api/v1/product/${id}`,  { headers: { Authorization: `Bearer ${storedToken}` } });
+          toast.success('Product deleted')
           navigate("/");
         } catch (error) {
           console.error(error);
@@ -35,21 +40,20 @@ export default function Product() {
 
 
   return (
-    <div>
-    <button onClick={() => navigate(-1)}>Go Back</button>
-        <h2>Product </h2>
-
+    <div className='productDetail'>
+    <div className='back'>
+      <button onClick={() => navigate(-1)}><FontAwesomeIcon icon={faLeftLong} /></button>
+    </div>
         {product && (
-        <div>
+        <div className='detailPro'>
           <h4>Product name: {product.title}</h4>
-          <p>
-            <img width="250px" src={product.images} alt={`Pic of ${product.title}`} />
-          </p>
+            <img width="300px" src={product.images} alt={`Pic of ${product.title}`} />
           <p>Description: {product.description}</p>
           <p>Details: {product.details}</p>
           <p>Price: {product.price}</p>
-          
-         <button onClick={handleDelete}>Delete product</button>
+        <div>
+          <button onClick={handleDelete}>Delete product</button> 
+        </div>
         </div>
         )}
       {!product && <p>Product not found</p>}
