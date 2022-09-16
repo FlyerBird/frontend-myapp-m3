@@ -84,7 +84,7 @@ export default function Signup() {
         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
       </div>
       <div className='signUpFormSections'>
-      <input type="file" onChange={(e) => handleFileUpload(e)} />
+      <input id='selectFile' type="file" onChange={(e) => handleFileUpload(e)} />
       </div>
         <button className='registerButton' type="submit">Sign up</button>
       </form>

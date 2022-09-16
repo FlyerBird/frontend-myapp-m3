@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 export default function EditProduct() {
+  const storedToken = localStorage.getItem('authToken')
     const navigate = useNavigate();
     const { id } = useParams();
     const [product, setProduct] = useState(null);
@@ -32,7 +33,7 @@ export default function EditProduct() {
       const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          const newProduct= await axios.put(`http://localhost:8000/api/v1/product/${id}`, product);
+          const newProduct= await axios.put(`http://localhost:8000/api/v1/product/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } });
           navigate(`/product/${newProduct.data.data._id}`)
         } catch (error) {
           console.error(error);

@@ -3,7 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLeftLong } from '@fortawesome/free-solid-svg-icons';
+import { faLeftLong  } from '@fortawesome/free-solid-svg-icons';
 import { AuthContext } from '../../context/AuthContext'
 
 
@@ -45,11 +45,14 @@ export default function Product() {
     </div>
         {product && (
         <div className='detailPro'>
-          <h4>Product name: {product.title}</h4>
-           {product.images.length > 1? product.images.map((img,i) => <img key={i} width="300px" src={img} alt={`Pic of ${product.title}`} />) : <img width="300px" src={product.images} alt={`Pic of ${product.title}`} />}
-          <p>Description: {product.description}</p>
+        <div className='slider'>
+          {product.images.length > 1? product.images.map((img,i) => <img className='eachDI' key={i} width="300px" src={img} alt={`Pic of ${product.title}`} />) : <img width="300px" src={product.images} alt={`Pic of ${product.title}`} />}
+        </div>
+        <div className='detailText'>
+          <h4>{product.title}</h4>
           <p>Details: {product.details}</p>
           <p>Price: {product.price}</p>
+          </div>
         <div>
           {isAdmin&&<Link to= "/edit">Edit Product</Link> }
           {isAdmin&&<button onClick={handleDelete}>Delete product</button> }
