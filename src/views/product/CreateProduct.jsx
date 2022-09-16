@@ -30,24 +30,18 @@ export default function CreateProduct() {
     uploadData.append("image", e.target.files[0]);
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/product/upload`, uploadData);
-      console.log(response.data.fileUrl);
-
       setImages(prev => [...prev, response.data.fileUrl]);
       setImgForAdmin(prev => [...prev, e.target.files[0].name]);
-
     } catch (error) {
       console.error(error);
     }
   };
 
   useEffect(()=>{
-    console.log(product);
-    console.log(images);
   }, [product, images])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     //In case of multiple file upload
     const productToSend = {
     title: product.title,
@@ -56,7 +50,6 @@ export default function CreateProduct() {
     details: product.details,
     images: images
     }
-
     try {
       const newProduct = await axios.post('http://localhost:8000/api/v1/product', productToSend, { headers: { Authorization: `Bearer ${storedToken}` } } );
       toast.success('Product created successfully')

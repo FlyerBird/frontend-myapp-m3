@@ -335,9 +335,6 @@ display: grid;
  justify-content: center;
 }
 
-#searchBarPro{
-  background-color: #2dcc25;
-}
 
 .eachProduct a{
 text-decoration: none;
@@ -373,6 +370,38 @@ text-decoration: none;
 
 .linkPro a{
   color: black;
+}
+
+.sort{
+  display: flex;
+  align-items: center;
+}
+.sortByPrice{
+  display: none;
+  gap: 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  background-color: #3DC4FC;
+  border:#3DC4FC;
+  border-radius: 2rem;
+  height: 100%;
+  align-items: center;
+}
+
+.sortPrice{
+  display: flex;
+  opacity: 0.8
+}
+
+.sortPrice button{
+  background-color: transparent;
+  border: none;
+  align-items: center;
+  color: #F7B84B;
+}
+
+.sortIcon{
+  color: #F7B84B;
 }
 
 /*********************************/
@@ -462,4 +491,54 @@ text-decoration: none;
     margin: 1rem;
     font-size: 1rem;
   }
+
+
+
 }
+
+@media only screen and (max-width: 450px){
+.sortByPrice{
+  display: flex;
+}
+
+.sort #hidden {
+  position: absolute;
+  left: 16rem;
+  top: 2rem;
+  height: 6rem;
+  max-height: 6rem;
+  width: 8rem;
+  background-color:black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0.5rem;
+
+}
+
+.sortPrice{
+  display: none;
+}
+
+.sort #hidden button {
+  margin: 1rem 1rem 0rem 1rem;
+}
+}
+
+@media only screen and (min-width: 450px){
+.sortPrice{
+  display: flex;
+  gap: 1rem;
+}
+
+.sortPrice button{
+  padding: 0.5rem;
+  background-color: #3DC4FC;
+  border:#3DC4FC;
+  border-radius: 2rem;
+  height: 100%;
+  align-items: center;
+  color: black;
+  }
+}
+

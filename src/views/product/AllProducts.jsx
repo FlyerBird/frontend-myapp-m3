@@ -2,22 +2,18 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faCartArrowDown, faMagnifyingGlass, faBars, faX } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faCartArrowDown, faMagnifyingGlass, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
 export default function AllProducts() {
     const [products, setProducts] = useState(null);
-    
     const [searchProduct, setSearchProduct] = useState("");
     const [filteredProducts, setfilteredProducts] = useState(null);
-
     const [showLinks, setShowLinks] = useState(false); 
     
-   
     const handleSort = () => {
      setShowLinks(showLinks => !showLinks);
    };
     
-
     useEffect(() => {
         const getData = async () => {
             try {
@@ -41,15 +37,14 @@ export default function AllProducts() {
         }
       };
 
-      const handleSortByPrice = () => {
+      const handleMoreExpensive = () => {
         const ordered = [...products].sort((a, b) => b.price - a.price);
-        console.log(ordered)
         setfilteredProducts(ordered)
-        //setProducts(prevProducts => {
-           // console.log(prevProducts)
-            //return [...prevProducts.sort((a, b) => b.price - a.price)]
-        //})
-      
+       }
+
+       const handleCheaper = () => {
+        const ordered = [...products].sort((a, b) => a.price - b.price);
+        setfilteredProducts(ordered)
        }
       
   return (
@@ -60,9 +55,10 @@ export default function AllProducts() {
              <input type="text" value={searchProduct} placeholder="What are you looking for?" onChange={handleSearch} />
         </div>
         <div className='sort'>
+        <button className='sortByPrice' onClick={handleSort}> Sort by Price {!showLinks ? <FontAwesomeIcon className='sortIcon' icon={faChevronDown} /> : <FontAwesomeIcon icon={faChevronUp} />}</button>
         <div className='sortPrice' id={showLinks ? "hidden" : ""}>
-            <button onClick={handleSortByPrice}>Sort by price</button>
-            <button onClick={handleSort}> {!showLinks ? <FontAwesomeIcon icon={faBars} /> : <FontAwesomeIcon icon={faX} />}</button>
+            <button onClick={handleMoreExpensive}>More expensive</button>
+            <button onClick={handleCheaper}>Cheaper</button>
         </div>
         </div>
        </div>

@@ -11,7 +11,6 @@ export default function EditProduct() {
         const getData = async () => {
           try {
             const product = await axios.get(`http://localhost:8000/api/v1/product/${id}`);
-            console.log(product)
             setProduct(product.data.data);
           } catch (error) {
             console.error(error);
@@ -39,8 +38,6 @@ export default function EditProduct() {
           console.error(error);
         }
       }
-
-
 
   return (
     <div>
