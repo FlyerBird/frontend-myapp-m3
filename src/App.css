@@ -174,7 +174,7 @@
 }
 
 /********** SIGN UP & LOGIN***********/
-.signUp, .login{
+.signUp, .login, .createProduct{
   background-color: #F7B84B;
   height: 100vh;
   padding-top: 4rem;
@@ -232,7 +232,7 @@ cursor: pointer;
   text-align: justify;
 }
 
-.headerSign{
+.headerSign, .headerCreateProduct{
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -249,7 +249,7 @@ cursor: pointer;
   color: #494949;
 }
 
-.signUp form, .login form{
+.signUp form, .login form, .createProduct form{
   display: flex;
   flex-direction: column;
   margin-left: 2rem;
@@ -257,12 +257,12 @@ cursor: pointer;
   gap: 0.5rem;
 }
 
-.signUpFormSections, .loginSections{
+.signUpFormSections, .loginSections, .createProductFormSections{
   display: flex;
   flex-direction: column;
 }
 
-.signUp form input, .login form input{
+.signUp form input, .login form input, .createProduct form input{
   border-radius: 10px;
   border-color: #3DC4FC;
   height: 3rem;

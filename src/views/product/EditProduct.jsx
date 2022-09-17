@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLeftLong  } from '@fortawesome/free-solid-svg-icons';
 
 export default function EditProduct() {
   const storedToken = localStorage.getItem('authToken')
@@ -11,7 +13,7 @@ export default function EditProduct() {
     useEffect(() => {
         const getData = async () => {
           try {
-            const product = await axios.get(`http://localhost:8000/api/v1/product/${id}`);
+            const product = await axios.get(`${process.env.REACT_APP_API_URL}/product/${id}`);
             setProduct(product.data.data);
           } catch (error) {
             console.error(error);
@@ -33,7 +35,7 @@ export default function EditProduct() {
       const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          const newProduct= await axios.put(`http://localhost:8000/api/v1/product/${id}`, product, { headers: { Authorization: `Bearer ${storedToken}` } });
+          const newProduct= await axios.put(`${process.env.REACT_APP_API_URL}/product/${id}`, product, { headers: { Authorization: `Bearer ${storedToken}` } });
           navigate(`/product/${newProduct.data.data._id}`)
         } catch (error) {
           console.error(error);
@@ -42,6 +44,9 @@ export default function EditProduct() {
 
   return (
     <div>
+       <div className='back'>
+        <button onClick={() => navigate(-1)}><FontAwesomeIcon icon={faLeftLong} /></button>
+      </div>
         {!product && <p>Loading...</p>}
         {product && (
         <form onSubmit={handleSubmit}>

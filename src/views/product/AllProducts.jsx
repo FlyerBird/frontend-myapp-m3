@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faCartArrowDown, faMagnifyingGlass, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
 export default function AllProducts() {
+    const storedToken = localStorage.getItem('authToken')
     const [products, setProducts] = useState(null);
     const [searchProduct, setSearchProduct] = useState("");
     const [filteredProducts, setfilteredProducts] = useState(null);
@@ -17,7 +18,7 @@ export default function AllProducts() {
     useEffect(() => {
         const getData = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/api/v1/product');
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/product`);
                 setProducts(response.data.data);
                 setfilteredProducts(response.data.data);
             } catch (error) {
@@ -45,6 +46,11 @@ export default function AllProducts() {
        const handleCheaper = () => {
         const ordered = [...products].sort((a, b) => a.price - b.price);
         setfilteredProducts(ordered)
+       }
+
+       const addToCart = async (productId) => {
+        const cart = await axios.post(`${process.env.REACT_APP_API_URL}/cart`, {productId}, { headers: { Authorization: `Bearer ${storedToken}` }})
+        console.log(cart)
        }
       
   return (
@@ -80,7 +86,11 @@ export default function AllProducts() {
                     </Link>
                     <div className='linkPro'>
                         <Link to={`/product/${product._id}`}><b><FontAwesomeIcon icon={faEye} /> Details</b></Link>
-                        <Link to={`/login`}><b><FontAwesomeIcon icon={faCartArrowDown} /> Buy</b></Link>
+                     
+                            <button onClick={()=> addToCart(product._id)} type='submit'><b><FontAwesomeIcon icon={faCartArrowDown} /> Buy</b></button>
+                     
+                        
+                        
                     </div>
                 </div>
             )

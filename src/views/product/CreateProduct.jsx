@@ -51,7 +51,7 @@ export default function CreateProduct() {
     images: images
     }
     try {
-      const newProduct = await axios.post('http://localhost:8000/api/v1/product', productToSend, { headers: { Authorization: `Bearer ${storedToken}` } } );
+      const newProduct = await axios.post(`${process.env.REACT_APP_API_URL}/product`, productToSend, { headers: { Authorization: `Bearer ${storedToken}` } } );
       toast.success('Product created successfully')
       navigate(`/product/${newProduct.data.data._id}`)
     } catch (error) {
@@ -60,13 +60,23 @@ export default function CreateProduct() {
   }
 
   return (
-    <div>
+    <div className='createProduct'>
+    <div className='headerCreateProduct'>
       <h2>Create Product</h2>
+    </div>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="title" placeholder="Title" value={product.title} onChange={handleChange} />
-        <input type="text" name="description" placeholder="Description" value={product.description} onChange={handleChange} />
-        <input type="number" name="price" placeholder="Price" value={product.price} onChange={handleChange} />
-        <input type="text" name="details" placeholder="Details" value={product.details} onChange={handleChange} />
+        <div className='createProductFormSections'>
+          <input type="text" name="title" placeholder="Title" value={product.title} onChange={handleChange} />
+        </div>
+        <div className='createProductFormSections'>
+          <input type="text" name="description" placeholder="Description" value={product.description} onChange={handleChange} />
+        </div>
+        <div className='createProductFormSections'>
+          <input type="number" name="price" placeholder="Price" value={product.price} onChange={handleChange} />
+        </div>
+        <div className='createProductFormSections'>
+          <input type="text" name="details" placeholder="Details" value={product.details} onChange={handleChange} />
+        </div>
         {imgForAdmin && (
           <ul>
             {imgForAdmin.map((elem, i) => {

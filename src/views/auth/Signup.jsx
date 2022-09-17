@@ -52,7 +52,6 @@ export default function Signup() {
     e.preventDefault();
     try {
       await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, { username: user.username, email: user.email, imageProfile: user.imageProfile, password });
-      //await axios.post('http://localhost:8000/api/v1/auth/signup', user, { headers: { Authorization: `Bearer ${storedToken}` } });
       toast.success('Profile created successfully')
       navigate('/login');
     } catch (error) {

@@ -37,6 +37,13 @@ export default function Product() {
         }
       };
 
+      
+      const addToCart = async (productId) => {
+        const cart = await axios.post(`${process.env.REACT_APP_API_URL}/cart`, {productId}, { headers: { Authorization: `Bearer ${storedToken}` }})
+        console.log(cart)
+       }
+      
+
 
   return (
     <div className='productDetail'>
@@ -59,6 +66,7 @@ export default function Product() {
         </div>
         </div>
         )}
+        {/* add button to add to cart*/}
       {!product && <p>Product not found</p>}
     
     </div>
