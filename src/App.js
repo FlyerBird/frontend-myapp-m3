@@ -28,7 +28,7 @@ function App() {
         <Route path="/create-product" element={<CreateProduct />} />
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path='/product' element={<AllProducts />} />
-        <Route path='/edit' element={<EditProduct />} />
+        <Route path='/edit/:id' element={<EditProduct />} />
         <Route path='/delete' element={<DeleteUser />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>

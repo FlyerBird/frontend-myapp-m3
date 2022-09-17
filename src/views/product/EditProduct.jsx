@@ -33,7 +33,7 @@ export default function EditProduct() {
       const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          const newProduct= await axios.put(`http://localhost:8000/api/v1/product/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } });
+          const newProduct= await axios.put(`http://localhost:8000/api/v1/product/${id}`, product, { headers: { Authorization: `Bearer ${storedToken}` } });
           navigate(`/product/${newProduct.data.data._id}`)
         } catch (error) {
           console.error(error);

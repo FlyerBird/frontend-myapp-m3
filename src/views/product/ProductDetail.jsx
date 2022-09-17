@@ -54,7 +54,7 @@ export default function Product() {
           <p>Price: {product.price}</p>
           </div>
         <div>
-          {isAdmin&&<Link to= "/edit">Edit Product</Link> }
+          {isAdmin&&<Link to= {`/edit/${id}`}>Edit Product</Link> }
           {isAdmin&&<button onClick={handleDelete}>Delete product</button> }
         </div>
         </div>
