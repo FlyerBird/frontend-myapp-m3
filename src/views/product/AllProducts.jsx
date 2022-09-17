@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faCartArrowDown, faMagnifyingGlass, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import toast from 'react-hot-toast';
 
 export default function AllProducts() {
     const storedToken = localStorage.getItem('authToken')
@@ -10,6 +11,7 @@ export default function AllProducts() {
     const [searchProduct, setSearchProduct] = useState("");
     const [filteredProducts, setfilteredProducts] = useState(null);
     const [showLinks, setShowLinks] = useState(false); 
+    const navigate = useNavigate();
     
     const handleSort = () => {
      setShowLinks(showLinks => !showLinks);
@@ -50,7 +52,9 @@ export default function AllProducts() {
 
        const addToCart = async (productId) => {
         const cart = await axios.post(`${process.env.REACT_APP_API_URL}/cart`, {productId}, { headers: { Authorization: `Bearer ${storedToken}` }})
-        console.log(cart)
+        toast('Added to Cart');
+        //navigate('/cart');
+        //cart
        }
       
   return (
@@ -63,8 +67,8 @@ export default function AllProducts() {
         <div className='sort'>
         <button className='sortByPrice' onClick={handleSort}> Sort by Price {!showLinks ? <FontAwesomeIcon className='sortIcon' icon={faChevronDown} /> : <FontAwesomeIcon icon={faChevronUp} />}</button>
         <div className='sortPrice' id={showLinks ? "hidden" : ""}>
-            <button onClick={handleMoreExpensive}>More expensive</button>
-            <button onClick={handleCheaper}>Cheaper</button>
+            <button onClick={handleCheaper}>Low to High</button>
+            <button onClick={handleMoreExpensive}>High to Low</button>
         </div>
         </div>
        </div>
@@ -86,11 +90,7 @@ export default function AllProducts() {
                     </Link>
                     <div className='linkPro'>
                         <Link to={`/product/${product._id}`}><b><FontAwesomeIcon icon={faEye} /> Details</b></Link>
-                     
-                            <button onClick={()=> addToCart(product._id)} type='submit'><b><FontAwesomeIcon icon={faCartArrowDown} /> Buy</b></button>
-                     
-                        
-                        
+                        <button onClick={()=> addToCart(product._id) } type='submit'><b><FontAwesomeIcon icon={faCartArrowDown} /> Add</b></button>
                     </div>
                 </div>
             )

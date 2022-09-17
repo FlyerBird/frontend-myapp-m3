@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLeftLong  } from '@fortawesome/free-solid-svg-icons';
+import { faCaretLeft  } from '@fortawesome/free-solid-svg-icons';
 
 export default function EditProduct() {
   const storedToken = localStorage.getItem('authToken')
@@ -43,9 +43,9 @@ export default function EditProduct() {
       }
 
   return (
-    <div>
+    <div className='editPro'>
        <div className='back'>
-        <button onClick={() => navigate(-1)}><FontAwesomeIcon icon={faLeftLong} /></button>
+        <button onClick={() => navigate(-1)}><FontAwesomeIcon icon={faCaretLeft} /></button>
       </div>
         {!product && <p>Loading...</p>}
         {product && (
@@ -54,7 +54,7 @@ export default function EditProduct() {
             <input type="text" name="description" placeholder="Description" value={product.description} onChange={handleChange} />
             <input type="text" name="details" placeholder="Details" value={product.details} onChange={handleChange} />
             <input type="text" name="price" placeholder="Price" value={product.price} onChange={handleChange} />
-            <button type="submit">Save changes</button>
+            <button className='editButtonButton' type="submit">Save changes</button>
         </form>
     )}
     </div>

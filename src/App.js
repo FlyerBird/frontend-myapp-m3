@@ -9,11 +9,10 @@ import Login from './views/auth/Login';
 import CreateProduct from './views/product/CreateProduct';
 import ProductDetail from './views/product/ProductDetail';
 import AllProducts from './views/product/AllProducts';
+import EditProduct from './views/product/EditProduct';
 import UserProfile from './views/user/UserProfile';
 import DeleteUser from './views/user/DeleteUser';
-import EditProduct from './views/product/EditProduct';
-
-
+import Cart from './views/cart/Cart';
 
 function App() {
   return (
@@ -30,6 +29,7 @@ function App() {
         <Route path='/product' element={<AllProducts />} />
         <Route path='/edit/:id' element={<EditProduct />} />
         <Route path='/delete' element={<DeleteUser />} />
+        <Route path='/cart' element={<Cart />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
       <Navbar />

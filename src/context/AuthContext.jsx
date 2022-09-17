@@ -10,6 +10,7 @@ function AuthProviderWrapper(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [cart, setCart] = useState(false);
   const navigate = useNavigate();
 
   // Functions to store and delete the token received by the backend in the browser
@@ -55,6 +56,8 @@ function AuthProviderWrapper(props) {
   useEffect(() => {
     authenticateUser();
   }, []);
+
+  //Function Cart(get)
   
   return (
     <AuthContext.Provider value={{ user, isLoggedIn, isLoading, isAdmin, storeToken, authenticateUser, logOutUser, removeToken }}>

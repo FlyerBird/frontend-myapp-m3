@@ -3,7 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLeftLong  } from '@fortawesome/free-solid-svg-icons';
+import { faCaretLeft, faCartArrowDown, faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { AuthContext } from '../../context/AuthContext'
 
 
@@ -39,16 +39,23 @@ export default function Product() {
 
       
       const addToCart = async (productId) => {
-        const cart = await axios.post(`${process.env.REACT_APP_API_URL}/cart`, {productId}, { headers: { Authorization: `Bearer ${storedToken}` }})
-        console.log(cart)
-       }
+        try{
+          const cart = await axios.post(`${process.env.REACT_APP_API_URL}/cart`, {productId}, { headers: { Authorization: `Bearer ${storedToken}` }})
+          console.log(cart)
+          toast('Added to Cart')
+          navigate('/cart');
+        } catch(error) {
+          console.error(error);
+          navigate('/login');
+        }
+       };
       
 
 
   return (
     <div className='productDetail'>
     <div className='back'>
-      <button onClick={() => navigate(-1)}><FontAwesomeIcon icon={faLeftLong} /></button>
+      <button onClick={() => navigate(-1)}><FontAwesomeIcon icon={faCaretLeft} /></button>
     </div>
         {product && (
         <div className='detailPro'>
@@ -56,17 +63,18 @@ export default function Product() {
           {product.images.length > 1? product.images.map((img,i) => <img className='eachDI' key={i} width="300px" src={img} alt={`Pic of ${product.title}`} />) : <img width="300px" src={product.images} alt={`Pic of ${product.title}`} />}
         </div>
         <div className='detailText'>
-          <h4>{product.title}</h4>
-          <p>Details: {product.details}</p>
-          <p>Price: {product.price}</p>
+          <h3>{product.title}</h3>
+          <h4>TECHNICAL FEATURES</h4>
+          <p>{product.details}</p>
+          <p className='detailPrice'>{product.price} €</p>
           </div>
-        <div>
-          {isAdmin&&<Link to= {`/edit/${id}`}>Edit Product</Link> }
-          {isAdmin&&<button onClick={handleDelete}>Delete product</button> }
+        <div className='detailProActions'>
+          {isAdmin&&<Link to= {`/edit/${id}`}><FontAwesomeIcon icon={faPenToSquare} />Edit Product</Link> }
+          {isAdmin&&<button className='deleteDetailButton' onClick={handleDelete}><FontAwesomeIcon icon={faTrash} /> Delete product</button> }
+          {!isAdmin&&<button className='buyDetailButton' onClick={()=> addToCart(product._id) } type='submit'><b><FontAwesomeIcon icon={faCartArrowDown} /> Buy</b></button>}
         </div>
         </div>
         )}
-        {/* add button to add to cart*/}
       {!product && <p>Product not found</p>}
     
     </div>

@@ -69,23 +69,25 @@ export default function CreateProduct() {
           <input type="text" name="title" placeholder="Title" value={product.title} onChange={handleChange} />
         </div>
         <div className='createProductFormSections'>
-          <input type="text" name="description" placeholder="Description" value={product.description} onChange={handleChange} />
+          <input className='bigger' type="text" name="description" placeholder="Description" value={product.description} onChange={handleChange} />
         </div>
         <div className='createProductFormSections'>
-          <input type="number" name="price" placeholder="Price" value={product.price} onChange={handleChange} />
+          <input  type="number" name="price" placeholder="Price" value={product.price} onChange={handleChange} />
         </div>
         <div className='createProductFormSections'>
-          <input type="text" name="details" placeholder="Details" value={product.details} onChange={handleChange} />
+          <input className='bigger2' type="text" name="details" placeholder="Details" value={product.details} onChange={handleChange} />
         </div>
         {imgForAdmin && (
-          <ul>
+          <ul >
             {imgForAdmin.map((elem, i) => {
               return <li key={i}>{elem}</li>
             })}
           </ul>
           )}
+          <label >
         <input type="file" onChange={(e) => handleFileUpload(e)} />
-        <button type="submit">Save</button>
+        </label>
+        <button className='createProButton' type="submit">Save</button>
       </form>
     </div>
   )

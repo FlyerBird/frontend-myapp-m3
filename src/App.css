@@ -174,7 +174,7 @@
 }
 
 /********** SIGN UP & LOGIN***********/
-.signUp, .login, .createProduct{
+.signUp, .login, .createProduct {
   background-color: #F7B84B;
   height: 100vh;
   padding-top: 4rem;
@@ -183,21 +183,33 @@
   gap: 2rem;
 }
 
-.productDetail{
+.editPro{
   background-color: #F7B84B;
   height: 100vh;
   display: flex;
   flex-direction: column;
+  gap: 2rem;
   padding-top: 1rem;
+}
+
+
+.productDetail{
+  background-color:#494949;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+  padding-bottom: 4rem;
   
 }
 
 
-.productDetail .back button{
+.productDetail .back button, .editPro .back button{
   background-color: transparent;
   border: none;
   font-size: 1.5rem;
   margin-left: 2rem;
+  color: white;
 }
 
 .detailPro {
@@ -226,11 +238,14 @@ cursor: pointer;
 
 .detailText{
   display: flex;
+  gap: 1rem;
   flex-direction: column;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   text-align: justify;
 }
+
+
 
 .headerSign, .headerCreateProduct{
   display: flex;
@@ -249,7 +264,7 @@ cursor: pointer;
   color: #494949;
 }
 
-.signUp form, .login form, .createProduct form{
+.signUp form, .login form, .createProduct form, .editPro form {
   display: flex;
   flex-direction: column;
   margin-left: 2rem;
@@ -262,7 +277,7 @@ cursor: pointer;
   flex-direction: column;
 }
 
-.signUp form input, .login form input, .createProduct form input{
+.signUp form input, .login form input, .createProduct form input, .editPro form input{
   border-radius: 10px;
   border-color: #3DC4FC;
   height: 3rem;
@@ -270,8 +285,7 @@ cursor: pointer;
   font-size: 1rem;
 }
 
-
-.registerButton, .loginButton{
+.registerButton, .loginButton, .createProButton, .editButtonButton{
   margin-top: 1rem;
   height: 3rem;
   border-radius: 10px;
@@ -363,6 +377,7 @@ display: grid;
 
 .eachProduct a{
 text-decoration: none;
+height: 100%;
 }
 
 .imgProduct{
@@ -379,18 +394,76 @@ text-decoration: none;
   color: #494949;
 }
 
+.detailText h3{
+  color: #facb7a;
+}
+
+.detailText h4{
+  color:white;
+}
+.detailText p{
+  color: #c5c4c4;
+}
+
+.detailText .detailPrice{
+  color:white;
+  font-size: 1.5rem;
+}
+
 .productPrice{
   color: black;
   font-size: 1.5rem;
 }
+
+.detailProActions{
+  display: flex;
+  gap: 4rem;
+  margin-top: 2rem;
+}
+
+.detailProActions a{
+  background-color: #F7B84B;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  text-decoration: none;
+}
+
+.detailProActions .deleteDetailButton{
+  background-color: black ;
+  color: #F7B84B;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+}
+
+.detailProActions .buyDetailButton{
+  background-color: #3DC4FC;
+  color:#facb7a;
+  padding: 0.5rem 4rem;
+  border-radius: 1rem;
+  border: none ;
+  font-size: 1.2rem;
+  }
 
 .linkPro{
   background-color: #F7B84B;
   display: flex;
   padding-left: 1rem;
   padding-right: 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.linkPro button{
+  background-color: transparent;
+  border: none;
+  display: flex;
+  padding-left: 1rem;
+  padding-right: 1rem;
   padding-bottom: 1rem;
   justify-content: space-between;
+  padding-top: 1rem;
+  font-size: 1.1rem;
 }
 
 .linkPro a{
@@ -427,6 +500,10 @@ text-decoration: none;
 
 .sortIcon{
   color: #F7B84B;
+}
+
+.selectCreatePro{
+  background-color: #333;
 }
 
 /*********************************/

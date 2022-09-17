@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faRightToBracket, faUserPlus, faHandPeace, faGear, faCartShopping } from '@fortawesome/free-solid-svg-icons'
 
 export default function Navbar() {
-  const { isLoggedIn, user, isAdmin } = useContext(AuthContext);
+  const { isLoggedIn, user, isAdmin, Cart } = useContext(AuthContext);
   
   return (
     <div className='navbar'>
@@ -14,7 +14,7 @@ export default function Navbar() {
         {!isLoggedIn && <NavLink className={(element) => element.isActive ? 'selected' : ''} to="/signup"><FontAwesomeIcon icon={faUserPlus} /></NavLink>}
         {!isLoggedIn && <NavLink className={(element) => element.isActive ? 'selected' : ''} to="/login"><FontAwesomeIcon icon={faRightToBracket} /> </NavLink>}
         {isLoggedIn && isAdmin && <NavLink className={(element) => element.isActive ? 'selected' : ''} to="/create-product"><FontAwesomeIcon icon={faGear} />Tools</NavLink>}
-        {isLoggedIn &&  <NavLink className={(element) => element.isActive ? 'selected' : ''} to="/"><FontAwesomeIcon icon={faCartShopping} /> </NavLink>}
+        {isLoggedIn &&  <NavLink className={(element) => element.isActive ? 'selected' : ''} to="/cart"><FontAwesomeIcon icon={faCartShopping} /> </NavLink>}
     </div>
   )
 }
