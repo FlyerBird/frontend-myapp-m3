@@ -13,6 +13,7 @@ import EditProduct from './views/product/EditProduct';
 import UserProfile from './views/user/UserProfile';
 import DeleteUser from './views/user/DeleteUser';
 import Cart from './views/cart/Cart';
+import Faq from './views/product/Faq';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path='/product' element={<AllProducts />} />
         <Route path='/edit/:id' element={<EditProduct />} />
         <Route path='/delete' element={<DeleteUser />} />
+        <Route path='/faq' element={<Faq />} />
         <Route path='/cart' element={<Cart />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>

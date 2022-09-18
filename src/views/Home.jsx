@@ -3,6 +3,8 @@ import AllProducts from './product/AllProducts';
 import { useRef } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesUp } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+import { motion } from "framer-motion";
 
 
 export default function Home() {
@@ -37,12 +39,13 @@ export default function Home() {
   return (
     <div>
       <div className='headerPic'>
-       <h1>funRide</h1>
-       <h3>SURFSKATES</h3>
+       <motion.h1 initial={{scale: 0.2}} transition={{ duration: 1}} animate={{ scale: 1 }}>funRide</motion.h1>
+       <motion.h3 initial={{scale: 0.2}} transition={{ duration: 1}} animate={{ scale: 1 }}>SURFSKATES</motion.h3>
       </div>
       <div className='mainBoxHome'>
       <div className='subHeader'>
         <h5 onClick={() => scrollToSection(about)} className="linkAbout">About</h5>
+        <Link className='faqLink' to = { '/faq'}> FAQ</Link>
         <h5 onClick={() => scrollToSection(contact)} className="linkAbout">Contact</h5>
       </div>
       <AllProducts />

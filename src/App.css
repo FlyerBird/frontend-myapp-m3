@@ -51,6 +51,13 @@
   width: 100%;
 }
 
+.subHeader .faqLink{
+  text-decoration: none;
+  color:#fff;
+  font-size: 0.8rem;
+  font-weight: 600
+}
+
 .subHeader h5{
   color: #F2F2F2;
 }
