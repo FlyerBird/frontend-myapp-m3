@@ -53,20 +53,15 @@ export default function Home() {
       <div className='footer'>
       <div ref={about} className="about">
         <h3>ABOUT</h3>
-        <p> 
-        We love surfSkate Un relato es un conocimiento que se transmite, 
-        por lo general en detalle, respecto a un cierto hecho. El concepto, 
-        que tiene su origen en el vocablo latino relātus, también permite nombrar 
-        a los cuentos y a las narraciones que no son demasiado extensas.Un relato e
-        s un conocimiento que se transmite, por lo general en detalle, respecto a un 
-        cierto hecho. El concepto, que tiene su origen en el vocablo latino relātus, 
-        también permite nombrar a los cuentos y a las narraciones que no son demasiado e
-        xtensas.
+        <p> “funRide SURFSKATES is a family driven company based in Catalonia and has built a 
+        reputation for online selling quality high-performance surfskates.
+        A good option for surf brands and surf stores to announce and sell their products."
         </p>
       </div>
       <div ref={contact} className="contact">
         <h3> CONTACT </h3>
-        <p> funride@funride.com</p>
+        <h5> funride@funride.com</h5>
+        <h5> +34 633 333 333</h5>
         <h5>
         <span>MADE WITH<span><img className='love' src='https://tudesign.co/wp-content/uploads/2022/03/heart.svg' alt=''/></span>BY CARLOS</span>
         </h5>

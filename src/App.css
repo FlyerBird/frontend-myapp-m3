@@ -162,11 +162,17 @@
   background-color: black;
   color: white;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .contact{
   background-color: #3DC4FC;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .love{
@@ -211,14 +217,74 @@
   margin-left: 2rem;
   color: white;
 }
+.deleteAccount{
+  background-color: #494949;
+  height: 100vh;
+}
 
 .deleteAccount .back button{
   background-color: transparent;
   border: none;
   font-size: 1.5rem;
   margin-left: 2rem;
+  padding-top: 1rem;
 }
 
+.deleteAcc{
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  text-align: center;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  border: 2px solid #F7B84B;
+  margin: 2rem;
+  border-radius: 1rem;
+}
+
+.deleteAcc .exclamationIcon{
+  font-size: 4rem;
+  color: #F7B84B;
+}
+
+.deleteAcc .delAccText{
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.deleteAcc .delAccText, .delAccSub{
+ display: flex;
+ flex-direction: column;
+ text-align: justify;
+ padding-bottom: 4rem;
+ gap: 1rem;
+}
+
+.deleteAcc .delAccText, .delAccSub h3{
+  color:#c5c4c4;
+ }
+
+.deleteAcc .delAccText h2{
+  display: flex;
+  text-align: center;
+  color:#F7B84B;
+  padding-bottom: 2rem;
+}
+
+.delAccButton{
+  display: flex;
+  justify-content: center;
+}
+
+.delAccButton button{
+background-color: black;
+color: #F7B84B;
+border: none;
+padding: 0.5rem;
+border-radius: 0.4rem;
+}
 
 
 .detailPro {
@@ -426,7 +492,7 @@ text-decoration: none;
 }
 
 .detailText h3{
-  color: #facb7a;
+  color:#F7B84B;
 }
 
 .detailText h4{
@@ -468,8 +534,8 @@ text-decoration: none;
 }
 
 .detailProActions .buyDetailButton{
-  background-color: #facb7a;
-  color:#3DC4FC;
+  background-color:#F7B84B;
+  color:black;
   padding: 0.5rem 4rem;
   border-radius: 1rem;
   border: none ;
