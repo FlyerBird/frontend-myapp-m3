@@ -71,7 +71,7 @@ export default function Product() {
         <div className='detailProActions'>
           {isAdmin&&<Link to= {`/edit/${id}`}><FontAwesomeIcon icon={faPenToSquare} />Edit Product</Link> }
           {isAdmin&&<button className='deleteDetailButton' onClick={handleDelete}><FontAwesomeIcon icon={faTrash} /> Delete product</button> }
-          {!isAdmin&&<button className='buyDetailButton' onClick={()=> addToCart(product._id) } type='submit'><b><FontAwesomeIcon icon={faCartArrowDown} /> Buy</b></button>}
+          {!isAdmin&&<button className='buyDetailButton' onClick={()=> addToCart(product._id) } type='submit'><b><FontAwesomeIcon icon={faCartArrowDown} /> Cart</b></button>}
         </div>
         </div>
         )}

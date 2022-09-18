@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import TopNav from '../../components/TopNav';
-import { Link } from 'react-router-dom';
-
 
 export default function UserProfile() {
     
     const storedToken = localStorage.getItem('authToken')
-    const navigate = useNavigate();
-
     const [user, setUser] = useState("");
  
     // GET USER DATA 
@@ -28,21 +23,18 @@ export default function UserProfile() {
 
      
   return (
-    <div>
+    <div className='userProfile'>
     <TopNav />
-      <button onClick={() => navigate(-1)}>Go Back</button>
       {!user && <p>Loading...</p>}
       {user && (
+        <div className='profileData'>
+        <h1> Hello {user.username}</h1>
         <div>
-        <h1> {user.username}'s Profile</h1>
-        <img width={200} src={user.imageProfile} alt={user.imageProfile}/>
-        <p>Username: {user.username}</p>
-        <p>Email:{user.email}</p>
+        <img src={user.imageProfile} alt={user.imageProfile}/>
+        </div>
+        <p>{user.email}</p>
         </div>
       ) }
-      
-     <Link to={'/delete'} >Delete Account</Link>
-
     </div>
   )
 }

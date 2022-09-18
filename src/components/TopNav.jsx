@@ -22,6 +22,7 @@ export default function TopNav() {
       <div className='links' id={showLinks ? "hidden" : ""}>
         <Link to={''}>Favorites</Link>
         {isLoggedIn && <Link to={'/'} onClick={() => logOutUser()}>Log out</Link>}
+        <Link to={'/delete'} >Delete Account</Link>
       </div>
       <button onClick={handleNavbar}> {!showLinks ? <FontAwesomeIcon icon={faBars} /> : <FontAwesomeIcon icon={faX} />}</button>
       </div>

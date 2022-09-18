@@ -212,6 +212,15 @@
   color: white;
 }
 
+.deleteAccount .back button{
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  margin-left: 2rem;
+}
+
+
+
 .detailPro {
 display: flex;
 flex-direction: column;
@@ -309,6 +318,25 @@ cursor: pointer;
   color: black;
 }
 
+/**********PROFILE***********/
+.userProfile{
+  background-color: #F7B84B;
+  height: 100vh;
+}
+
+.profileData{
+display: flex;
+flex-direction: column;
+text-align: center;
+gap: 1rem;
+justify-items: center;
+align-items: center;
+padding-top: 2rem;
+}
+
+.profileData img{
+  width: 200px;
+}
 
 /**********ALL PRODUCTS***********/
 .searchAndProducts{
@@ -377,7 +405,6 @@ display: grid;
 
 .eachProduct a{
 text-decoration: none;
-height: 100%;
 }
 
 .imgProduct{
@@ -392,6 +419,10 @@ height: 100%;
   flex-direction: column;
   gap: 0.5rem;
   color: #494949;
+}
+
+.textProduct .productDescription{
+  text-align: justify;
 }
 
 .detailText h3{
@@ -437,8 +468,8 @@ height: 100%;
 }
 
 .detailProActions .buyDetailButton{
-  background-color: #3DC4FC;
-  color:#facb7a;
+  background-color: #facb7a;
+  color:#3DC4FC;
   padding: 0.5rem 4rem;
   border-radius: 1rem;
   border: none ;

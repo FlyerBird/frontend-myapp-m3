@@ -3,6 +3,8 @@ import toast from 'react-hot-toast';
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCaretLeft, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 export default function DeleteUser() {
     const { logOutUser, user } = useContext(AuthContext);
@@ -29,8 +31,10 @@ export default function DeleteUser() {
     };
 
   return (
-    <div>
-         <button onClick={() => navigate(-1)}>Go Back</button>
+    <div className='deleteAccount'>
+      <div className='back'>
+        <button onClick={() => navigate(-1)}><FontAwesomeIcon icon={faCaretLeft} /></button>
+      </div>
         <div>
           <button onClick={handleDelete}>Delete Account</button>
         </div>
