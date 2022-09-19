@@ -58,6 +58,39 @@
   font-weight: 600
 }
 
+.faq{
+  background-color:#F2F2F2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 1rem;
+  padding: 2rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.faq h2{
+  padding-bottom: 2rem;
+}
+
+.faqCard{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #fff;
+  padding: 1.5rem 1rem;
+  border-radius: 1rem;
+}
+
+.faqText{
+  text-align: justify;
+}
+
+.faqCard p{
+ line-height: 120%;
+}
+
 .subHeader h5{
   color: #F2F2F2;
 }
