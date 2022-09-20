@@ -11,7 +11,7 @@ export default function UserProfile() {
     useEffect(() => {
         const getData = async () => {
           try {
-            const user = await axios.get('http://localhost:8000/api/v1/auth/me', { headers: { Authorization: `Bearer ${storedToken}` } });
+            const user = await axios.get(`${process.env.REACT_APP_API_URL}/auth/me`, { headers: { Authorization: `Bearer ${storedToken}` } });
             return setUser(user.data);
           } catch (error) {
             console.error(error);

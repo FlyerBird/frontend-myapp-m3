@@ -12,13 +12,13 @@ export default function Product() {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
     const navigate = useNavigate();
-    const { isAdmin } = useContext(AuthContext);
+    const { isAdmin, updateCart } = useContext(AuthContext);
   
 
     useEffect(() => {
         const getData = async () => {
           try {
-            const response = await axios.get(`http://localhost:8000/api/v1/product/${id}`)
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/product/${id}`)
             setProduct(response.data.data)
           } catch (error) {
             console.error(error);
@@ -29,7 +29,7 @@ export default function Product() {
 
     const handleDelete = async () => {
         try {
-          await axios.delete(`http://localhost:8000/api/v1/product/${id}`,  { headers: { Authorization: `Bearer ${storedToken}` } });
+          await axios.delete(`${process.env.REACT_APP_API_URL}/product/${id}`,  { headers: { Authorization: `Bearer ${storedToken}` } });
           toast.success('Product deleted')
           navigate("/");
         } catch (error) {
@@ -42,6 +42,7 @@ export default function Product() {
         try{
           const cart = await axios.post(`${process.env.REACT_APP_API_URL}/cart`, {productId}, { headers: { Authorization: `Bearer ${storedToken}` }})
           console.log(cart)
+          updateCart()
           toast('Added to Cart')
           navigate('/cart');
         } catch(error) {

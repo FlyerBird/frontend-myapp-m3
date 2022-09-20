@@ -4,7 +4,7 @@ import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretLeft, faTrash, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
+import { faCaretLeft, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 
 export default function DeleteUser() {
     const { logOutUser, user } = useContext(AuthContext);
@@ -20,7 +20,7 @@ export default function DeleteUser() {
 
     const handleDelete = async () => {
       try {
-        await axios.delete(`http://localhost:8000/api/v1/user/${user._id}`,  { headers: { Authorization: `Bearer ${storedToken}` } });
+        await axios.delete(`${process.env.REACT_APP_API_URL}/user/${user._id}`,  { headers: { Authorization: `Bearer ${storedToken}` } });
         toast.success('User deleted')
         navigate("/");
         removeToken();

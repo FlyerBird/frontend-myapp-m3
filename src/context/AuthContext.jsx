@@ -10,7 +10,7 @@ function AuthProviderWrapper(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
-  const [cart, setCart] = useState(false);
+  const [cart, setCart] = useState("");
   const navigate = useNavigate();
 
   // Functions to store and delete the token received by the backend in the browser
@@ -57,20 +57,29 @@ function AuthProviderWrapper(props) {
     authenticateUser();
   }, []);
 
-  /*Function Cart(get)
-  const Cart = async () => {
+  //function Cart(get)
+  const getCart = async () => {
     const storedToken = localStorage.getItem('authToken');
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/product-cart`, { headers: { Authorization: `Bearer ${storedToken}` } });
-      
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/cart`, { headers: { Authorization: `Bearer ${storedToken}` } });
+      setCart(response.data.data[0].products) 
     } catch (error) {
-      
+      console.error(error)
     }
   }
-  */
+  // fer un set cart cada vegada que cridis getCart
+  // declarar funcio updatecart () => getcart()
+  const updateCart = async () => {
+    try {
+      await getCart()
+    } catch (error) {
+      console.error(error)
+    }
+  }
   
   return (
-    <AuthContext.Provider value={{ user, isLoggedIn, isLoading, isAdmin, storeToken, authenticateUser, logOutUser, removeToken }}>
+    // exportaras nomes updatecart i cart 
+    <AuthContext.Provider value={{ user, isLoggedIn, isLoading, isAdmin, storeToken, authenticateUser, logOutUser, removeToken, getCart, updateCart, cart }}>
       {props.children}
     </AuthContext.Provider>
   )

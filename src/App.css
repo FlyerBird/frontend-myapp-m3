@@ -67,8 +67,20 @@
   text-align: center;
   gap: 1rem;
   padding: 2rem;
-  padding-top: 4rem;
+  padding-top: 2rem;
   padding-bottom: 4rem;
+}
+
+.backFaq{
+  background-color:#F2F2F2;
+}
+
+.backFaq button{
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  margin-left: 2rem;
+  padding-top: 2rem;
 }
 
 .faq h2{
@@ -103,6 +115,22 @@
 
 
 /********** NAVBAR ***********/
+.faCartIcon{
+position: absolute;
+z-index: -1;
+
+}
+
+.numCart{
+position: relative;
+background-color:#494949;
+border-radius: 50%;
+padding: 2px;
+font-size: 0.9rem;
+left: 10px;
+bottom: 10px;
+}
+
 .navbar{
   display: flex;
   background-color: black;
@@ -254,6 +282,7 @@
   padding-bottom: 4rem;
   
 }
+
 
 
 .productDetail .back button, .editPro .back button{

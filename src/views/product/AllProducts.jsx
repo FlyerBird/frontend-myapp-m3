@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faCartArrowDown, faMagnifyingGlass, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import toast from 'react-hot-toast';
+import { AuthContext } from '../../context/AuthContext'
 
 export default function AllProducts() {
     const storedToken = localStorage.getItem('authToken')
@@ -12,6 +13,8 @@ export default function AllProducts() {
     const [filteredProducts, setfilteredProducts] = useState(null);
     const [showLinks, setShowLinks] = useState(false); 
     const navigate = useNavigate();
+    // usecontext i eimportes el updatecart
+    const { updateCart, isLoggedIn } = useContext(AuthContext);
     
     const handleSort = () => {
      setShowLinks(showLinks => !showLinks);
@@ -51,10 +54,11 @@ export default function AllProducts() {
        }
 
        const addToCart = async (productId) => {
-        const cart = await axios.post(`${process.env.REACT_APP_API_URL}/cart`, {productId}, { headers: { Authorization: `Bearer ${storedToken}` }})
+        updateCart()
+        await axios.post(`${process.env.REACT_APP_API_URL}/cart`, {productId}, { headers: { Authorization: `Bearer ${storedToken}` }})
+        // invocar updatecart() l'hauras de rebre a l'inici d'aquesta funcio, rebentho del usecontext
         toast('Added to Cart');
         //navigate('/cart');
-        //cart
        }
       
   return (
@@ -90,7 +94,8 @@ export default function AllProducts() {
                     </Link>
                     <div className='linkPro'>
                         <Link to={`/product/${product._id}`}><b><FontAwesomeIcon icon={faEye} /> Details</b></Link>
-                        <button onClick={()=> addToCart(product._id) } type='submit'><b><FontAwesomeIcon icon={faCartArrowDown} /> Add</b></button>
+                        {isLoggedIn&&<button onClick={()=> addToCart(product._id)} type='submit'><b><FontAwesomeIcon icon={faCartArrowDown} /> Add</b></button>}
+                        {!isLoggedIn&&<button onClick={()=> navigate('/login')} type='submit'><b><FontAwesomeIcon icon={faCartArrowDown} /> Add</b></button>}
                     </div>
                 </div>
             )

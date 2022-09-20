@@ -1,8 +1,11 @@
 import React, {useState} from 'react';
 import { motion } from "framer-motion";
+import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCaretLeft } from '@fortawesome/free-solid-svg-icons';
 
 export default function Faq() {
-
+ const navigate = useNavigate();
  const [open, setOpen] = useState(false);
  const [open2, setOpen2] = useState(false);
  const [open3, setOpen3] = useState(false);
@@ -10,6 +13,10 @@ export default function Faq() {
  const [open5, setOpen5] = useState(false);
 
   return (
+    <div>
+    <div className='backFaq'>
+      <button onClick={() => navigate(-1)}><FontAwesomeIcon icon={faCaretLeft} /></button>
+    </div>
     <div className='faq'>
         <h2> Frequently asked Questions about Surfskating </h2>
         <motion.div onClick={() => setOpen(!open) } className='faqCard'>
@@ -91,6 +98,7 @@ export default function Faq() {
           </motion.div>
           )}
         </motion.div>
+    </div>
     </div>
   )
 }
