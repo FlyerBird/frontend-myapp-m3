@@ -57,7 +57,17 @@ function AuthProviderWrapper(props) {
     authenticateUser();
   }, []);
 
-  //Function Cart(get)
+  /*Function Cart(get)
+  const Cart = async () => {
+    const storedToken = localStorage.getItem('authToken');
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/product-cart`, { headers: { Authorization: `Bearer ${storedToken}` } });
+      
+    } catch (error) {
+      
+    }
+  }
+  */
   
   return (
     <AuthContext.Provider value={{ user, isLoggedIn, isLoading, isAdmin, storeToken, authenticateUser, logOutUser, removeToken }}>

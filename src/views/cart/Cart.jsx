@@ -9,7 +9,7 @@ export default function Cart() {
       try {
         const productsCart = await axios.get(`${process.env.REACT_APP_API_URL}/product-cart`);
         setProducts(productsCart.data.data);
-        console.log(productsCart.data.data)
+        console.log(products)
       } catch (error) {
         console.error(error);
       }
