@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 import { motion } from "framer-motion";
 import { useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretLeft } from '@fortawesome/free-solid-svg-icons';
 
 export default function Faq() {
  const navigate = useNavigate();
@@ -15,7 +13,11 @@ export default function Faq() {
   return (
     <div>
     <div className='backFaq'>
-      <button onClick={() => navigate(-1)}><FontAwesomeIcon icon={faCaretLeft} /></button>
+      <motion.button 
+      transition={{ duration: 1}}
+      initial={{ x: 400}}
+      animate={{ x: 0}}
+      onClick={() => navigate(-1)}><h1 className='faqh1'>funRide</h1></motion.button>
     </div>
     <div className='faq'>
         <h2> Frequently asked Questions about Surfskating </h2>

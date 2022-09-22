@@ -30,24 +30,24 @@ useEffect (() => {
 
   return (
     <div className='Cart'>
-    <div className='back'>
-      <button onClick={() => navigate(-1)}><FontAwesomeIcon icon={faCaretLeft} /></button>
-    </div>
-    {products && products.map((product, i) => {
+      <div className='back'>
+        <button button onClick={() => navigate(-1)}><FontAwesomeIcon icon={faCaretLeft} /></button>
+      </div>
+      {products && products.map((product, i) => {
       return <div className='onEachProCart' key={product._id + i}>
-      <div className='eachProductCart'>
-      <div className='cartProductImg'>
-      {Array.isArray(product.images) ? <img className='imgProductCart' src={product.images[0]} alt={`Pic of ${product.title}`} /> : <img className='imgProductCart' src={product.images} alt={`Pic of ${product.title}`} />}
+        <div className='eachProductCart'>
+          <div className='cartProductImg'>
+            {Array.isArray(product.images) ? <img className='imgProductCart' src={product.images[0]} alt={`Pic of ${product.title}`} /> : <img className='imgProductCart' src={product.images} alt={`Pic of ${product.title}`} />}
+          </div>
+        <div className='cartProductTxt'>
+          <p>{product.title}</p>
+          <p>{product.price}€</p>
+        </div>
+        <div className='cartRemoveButton'>
+          <button onClick={handleDelete}>Remove</button>
+        </div>
       </div>
-      <div className='cartProductTxt'>
-      <p>{product.title}</p>
-      <p>{product.price}€</p>
-      </div>
-      <div className='cartRemoveButton'>
-      <button onClick={handleDelete}>Remove</button>
-      </div>
-      </div>
-      </div>
+    </div>
     })}
     {!products && <p>No products</p>}
     </div>

@@ -67,20 +67,30 @@
   text-align: center;
   gap: 1rem;
   padding: 2rem;
-  padding-top: 2rem;
+  padding-top: 3rem;
   padding-bottom: 4rem;
 }
 
+.faqh1{
+  
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-style: oblique;
+  font-size: 1.5rem;
+  padding-left: 2rem;
+}
+
 .backFaq{
-  background-color:#F2F2F2;
+  display: flex;
+  background-color:#F7B84B;
+  height: 2.8rem;
 }
 
 .backFaq button{
   background-color: transparent;
   border: none;
   font-size: 1.5rem;
-  margin-left: 2rem;
-  padding-top: 2rem;
+  display: flex;
+  align-items: center;
 }
 
 .faq h2{
