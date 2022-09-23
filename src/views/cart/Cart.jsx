@@ -12,9 +12,13 @@ export default function Cart() {
   const [products, setProducts] = useState(null);
   const { cartContext } = useContext(AuthContext);
   const navigate = useNavigate();
-  const[totalAmount, setTotalAmount] = useState ([]);
+  //const[totalAmount, setTotalAmount] = useState ([]);
   
   const [cart, setCart] = useState("");
+
+  const removeToken = () => {
+    localStorage.removeItem('authToken');
+  }
 
   useEffect (() => {
     setCart(cartContext)
@@ -32,19 +36,20 @@ useEffect (() => {
 
   const handleDelete = async (_id) => {
     try {
-      await axios.put(`${process.env.REACT_APP_API_URL}/cart/${_id}`,  { headers: { Authorization: `Bearer ${storedToken}` } });
+      await axios.delete(`${process.env.REACT_APP_API_URL}/cart/${_id}`,  { headers: { Authorization: `Bearer ${storedToken}` } });
       toast.success('Product removed');
+      removeToken();
     } catch (error) {
       console.error(error);
     }
   };
 
-
+/*
   const sum = () => {
     const result = products.map(elem => elem.price).reduce((prev, curr)=> prev + curr, 0);
     setTotalAmount(result)
   }
-  
+  */
 
 
   return (
@@ -77,7 +82,7 @@ useEffect (() => {
       </div>
     </div>
     })}
-    <div>Total : {totalAmount} </div>
+    <div>Total : {} </div>
     <div>
       <button onClick={()=> navigate('/buyNow')} className='buyNow'>Buy now</button>
     </div>
