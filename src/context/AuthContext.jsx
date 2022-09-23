@@ -55,6 +55,7 @@ function AuthProviderWrapper(props) {
 
   useEffect(() => {
     authenticateUser();
+    getCart();
   }, []);
 
   //function Cart(get)

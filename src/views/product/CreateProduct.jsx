@@ -84,9 +84,10 @@ export default function CreateProduct() {
             })}
           </ul>
           )}
-          <label >
-        <input type="file" onChange={(e) => handleFileUpload(e)} />
-        </label>
+        <div className='file-select' id='src-file1' >
+          <input type="file" onChange={(e) => handleFileUpload(e)} />
+        </div>
+        
         <button className='createProButton' type="submit">Save</button>
       </form>
     </div>

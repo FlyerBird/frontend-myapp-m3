@@ -20,7 +20,6 @@ export default function TopNav() {
       </div>
       <div className='rightTopNav'>
       <div className='links' id={showLinks ? "hidden" : ""}>
-        <Link to={''}>Favorites</Link>
         {isLoggedIn && <Link to={'/'} onClick={() => logOutUser()}>Log out</Link>}
         <Link to={'/delete'} >Delete Account</Link>
       </div>

@@ -13,12 +13,11 @@ export default function Cart() {
   const { cart } = useContext(AuthContext);
   const navigate = useNavigate();
   const[totalAmount, setTotalAmount] = useState ([])
-  //let totalAmount = products.map(elem => elem.price).reduce((prev, curr)=> prev + curr, 0);
-
+ 
 // de context rebras cart, useeffect lunic que fa es agafar cart i fer setproducts(cart)
 useEffect (() => {
   setProducts(cart);
-  setTotalAmount()
+  sum();
 }
 ,[cart])
   // array dependencies cart
@@ -56,10 +55,10 @@ useEffect (() => {
           <p>{product.price}€</p>
         </div>
         <div className='cartRemoveButton'>
-          <button onClick={handleDelete}>Remove</button>
+          <button onClick={() => handleDelete(product._id)}>Remove</button>
         </div>
       </div>
-      <div></div>
+      <div>Total : {totalAmount} </div>
     </div>
     })}
     {!products && <p>No products</p>}

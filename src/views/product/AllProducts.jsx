@@ -13,7 +13,6 @@ export default function AllProducts() {
     const [filteredProducts, setfilteredProducts] = useState(null);
     const [showLinks, setShowLinks] = useState(false); 
     const navigate = useNavigate();
-    // usecontext i eimportes el updatecart
     const { updateCart, isLoggedIn } = useContext(AuthContext);
     
     const handleSort = () => {
