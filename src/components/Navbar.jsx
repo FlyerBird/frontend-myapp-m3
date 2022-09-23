@@ -5,13 +5,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faRightToBracket, faUserPlus, faHandPeace, faGear, faCartShopping } from '@fortawesome/free-solid-svg-icons'
 
 export default function Navbar() {
-  const { isLoggedIn, user, isAdmin, cart } = useContext(AuthContext);
-  const [cartt, setCart] = useState(null);
+  const { isLoggedIn, user, isAdmin, cartContext } = useContext(AuthContext);
+  const [cart, setCart] = useState(null);
 // de context rebras cart, useeffect lunic que fa es agafar cart i fer setCart(cart)
   useEffect (() => {
-    setCart(cart)
+    setCart(cartContext)
   }
-  ,[cart])
+  ,[cartContext])
   // en l'array posarem cart
 
   return (

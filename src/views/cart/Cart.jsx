@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useContext} from 'react';
 import { AuthContext } from "../../context/AuthContext";
-import { useParams, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretLeft } from '@fortawesome/free-solid-svg-icons';
 import toast from 'react-hot-toast';
@@ -8,24 +8,23 @@ import axios from 'axios';
 
 export default function Cart() {
   const storedToken = localStorage.getItem('authToken')
-  const { id } = useParams();
   const [products, setProducts] = useState(null);
-  const { cart } = useContext(AuthContext);
+  const { cartContext } = useContext(AuthContext);
   const navigate = useNavigate();
   const[totalAmount, setTotalAmount] = useState ([])
  
 // de context rebras cart, useeffect lunic que fa es agafar cart i fer setproducts(cart)
 useEffect (() => {
-  setProducts(cart);
-  sum();
+  setProducts(cartContext);
+  //sum();
 }
-,[cart])
+,[cartContext])
   // array dependencies cart
 
-  const handleDelete = async () => {
+  const handleDelete = async (_id) => {
     try {
-      await axios.delete(`${process.env.REACT_APP_API_URL}/product/${id}`,  { headers: { Authorization: `Bearer ${storedToken}` } });
-      toast.success('Product removed')
+      await axios.delete(`${process.env.REACT_APP_API_URL}/cart/${_id}`,  { headers: { Authorization: `Bearer ${storedToken}` } });
+      toast.success('Product removed');
     } catch (error) {
       console.error(error);
     }

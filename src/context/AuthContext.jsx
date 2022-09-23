@@ -10,7 +10,7 @@ function AuthProviderWrapper(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
-  const [cart, setCart] = useState("");
+  const [cartContext, setCartContext] = useState("");
   const navigate = useNavigate();
 
   // Functions to store and delete the token received by the backend in the browser
@@ -63,7 +63,7 @@ function AuthProviderWrapper(props) {
     const storedToken = localStorage.getItem('authToken');
     try {
       const response = await axios.get(`${process.env.REACT_APP_API_URL}/cart`, { headers: { Authorization: `Bearer ${storedToken}` } });
-      setCart(response.data.data[0].products) 
+      setCartContext(response.data.data[0].products) 
     } catch (error) {
       console.error(error)
     }
@@ -80,7 +80,7 @@ function AuthProviderWrapper(props) {
   
   return (
     // exportaras nomes updatecart i cart 
-    <AuthContext.Provider value={{ user, isLoggedIn, isLoading, isAdmin, storeToken, authenticateUser, logOutUser, removeToken, getCart, updateCart, cart }}>
+    <AuthContext.Provider value={{ user, isLoggedIn, isLoading, isAdmin, storeToken, authenticateUser, logOutUser, removeToken, getCart, updateCart, cartContext }}>
       {props.children}
     </AuthContext.Provider>
   )
