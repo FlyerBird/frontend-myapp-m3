@@ -66,7 +66,7 @@ export default function Home() {
         <h5> funride@funride.com</h5>
         <h5> +34 633 333 333</h5>
         <h5>
-        <span>MADE WITH<span><img className='love' src='https://tudesign.co/wp-content/uploads/2022/03/heart.svg' alt=''/></span>BY CARLOS</span>
+        <span>MADE WITH<span><img className='love' src='https://tudesign.co/wp-content/uploads/2022/03/heart.svg' alt='heart'/></span>BY CARLOS</span>
         </h5>
       </div>
       </div>

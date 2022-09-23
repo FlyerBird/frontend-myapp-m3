@@ -626,7 +626,7 @@ text-decoration: none;
   border-radius: 1rem;
 }
 
-.detailProActions .buyDetailButton{
+.detailProActions .buyDetailButton, .buyNow{
   background-color:#F7B84B;
   color:black;
   padding: 0.5rem 4rem;
@@ -713,6 +713,12 @@ text-decoration: none;
   padding-bottom: 1rem;
 }
 
+.cartRemoveButton button{
+  background-color: transparent;
+  border: none;
+  font-size: 1.2rem;
+}
+
 
 .eachProductCart{
   display: flex;
@@ -728,7 +734,29 @@ text-decoration: none;
   flex-direction: column;
 }
 
+.cartProductTxt p{
+  font-weight: bold;
+}
 
+.cartProductTxt .cartEachPrice{
+  color: #494949;
+}
+
+.checkout{
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1rem;
+}
+
+.thanks{
+  height: 100vh;
+  background-color: #F7B84B;
+}
+
+.thanksGif{
+ 
+  padding-top: 8rem;
+}
 
 /*********************************/
 .loading{

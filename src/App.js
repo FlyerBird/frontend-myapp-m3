@@ -14,6 +14,7 @@ import UserProfile from './views/user/UserProfile';
 import DeleteUser from './views/user/DeleteUser';
 import Cart from './views/cart/Cart';
 import Faq from './views/product/Faq';
+import BuyNow from './views/cart/BuyNow.jsx'
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path='/delete' element={<DeleteUser />} />
         <Route path='/faq' element={<Faq />} />
         <Route path='/cart' element={<Cart />} />
+        <Route path='/buyNow' element={<BuyNow />}/>
         <Route path="*" element={<ErrorPage />} />
       </Routes>
       <Navbar />
