@@ -18,7 +18,7 @@ export default function UserProfile() {
           }
         };
         getData();
-      }, []);
+      }, [storedToken]);
       
 
      
