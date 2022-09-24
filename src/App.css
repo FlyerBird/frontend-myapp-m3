@@ -8,8 +8,7 @@
 
 /********** HEADER ***********/
 .headerPic{
-  width: 100%;
-  height: 5rem;
+ 
   background-size: contain;
   background-repeat: no-repeat;
   position: fixed;
