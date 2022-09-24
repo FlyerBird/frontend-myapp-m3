@@ -56,7 +56,6 @@ export default function AllProducts() {
         await axios.post(`${process.env.REACT_APP_API_URL}/cart`, {productId}, { headers: { Authorization: `Bearer ${storedToken}` }})
         toast('Added to Cart');
         updateCart()
-        navigate('/cart');
        }
       
   return (
