@@ -8,49 +8,31 @@ import { faSquareXmark } from '@fortawesome/free-solid-svg-icons'
 import { motion } from "framer-motion";
 
 export default function Cart() {
-  const storedToken = localStorage.getItem('authToken')
-  const [products, setProducts] = useState(null);
-  const { cartContext } = useContext(AuthContext);
+  const storedToken = localStorage.getItem('authToken');
+  const { cartContext, updateCart } = useContext(AuthContext);
   const navigate = useNavigate();
-  //const[totalAmount, setTotalAmount] = useState ([]);
-  
-  const [cart, setCart] = useState("");
-
-  const removeToken = () => {
-    localStorage.removeItem('authToken');
-  }
+  const[totalAmount, setTotalAmount] = useState (null);
+  const [cart, setCart] = useState(null);
 
   useEffect (() => {
-    setCart(cartContext)
+    const setCartFromContext = async () => {
+      setCart(cartContext);
+      setTotalAmount(cartContext.map(elem => elem.price).reduce((prev, curr)=> prev + curr, 0))
+    }
+    setCartFromContext();
   }
   ,[cartContext])
  
-// de context rebras cart, useeffect lunic que fa es agafar cart i fer setproducts(cart)
-useEffect (() => {
-  setProducts(cartContext);
-  //sum();
-}
-,[cartContext])
-  // array dependencies cart
-
-
   const handleDelete = async (_id) => {
+    console.log("id is", _id)
     try {
       await axios.delete(`${process.env.REACT_APP_API_URL}/cart/${_id}`,  { headers: { Authorization: `Bearer ${storedToken}` } });
+      updateCart()
       toast.success('Product removed');
-      removeToken();
     } catch (error) {
       console.error(error);
     }
   };
-
-/*
-  const sum = () => {
-    const result = products.map(elem => elem.price).reduce((prev, curr)=> prev + curr, 0);
-    setTotalAmount(result)
-  }
-  */
-
 
   return (
     <div>
@@ -64,9 +46,9 @@ useEffect (() => {
       </div>
     <div className='Cart'>
     <div className='checkout'>
-      <h4>Checkout ({cart.length} products)</h4>
+      <h4>Checkout {cart && cart.length} products</h4>
     </div>
-      {products && products.map((product, i) => {
+      {cart && cart.map((product, i) => {
       return <div className='onEachProCart' key={product._id + i}>
         <div className='eachProductCart'>
           <div className='cartProductImg'>
@@ -82,11 +64,11 @@ useEffect (() => {
       </div>
     </div>
     })}
-    <div>Total : {} </div>
+    <div>Total : {totalAmount} </div>
     <div>
       <button onClick={()=> navigate('/buyNow')} className='buyNow'>Buy now</button>
     </div>
-    {!products && <p>No products</p>}
+    {!cart && <p>No products</p>}
     </div>
     </div>
   )

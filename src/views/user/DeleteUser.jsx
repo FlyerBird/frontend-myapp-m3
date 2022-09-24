@@ -10,13 +10,10 @@ export default function DeleteUser() {
     const { logOutUser, user } = useContext(AuthContext);
     const navigate = useNavigate();
     const storedToken = localStorage.getItem('authToken');
-    
-    
-
+  
     const removeToken = () => {
       localStorage.removeItem('authToken');
     }
-
 
     const handleDelete = async () => {
       try {

@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 const AuthContext = createContext();
 
 function AuthProviderWrapper(props) {
-  // Store the variables we want to share
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setLoading] = useState(true);
@@ -13,7 +12,6 @@ function AuthProviderWrapper(props) {
   const [cartContext, setCartContext] = useState("");
   const navigate = useNavigate();
 
-  // Functions to store and delete the token received by the backend in the browser
   const storeToken = (token) => {
     localStorage.setItem('authToken', token);
   }
@@ -22,7 +20,6 @@ function AuthProviderWrapper(props) {
     localStorage.removeItem('authToken');
   }
 
-  // Function to check if the user is already authenticated or not (and isAdmin or not)
   const authenticateUser = async () => {
     setLoading(true);
     const storedToken = localStorage.getItem('authToken');
@@ -58,7 +55,7 @@ function AuthProviderWrapper(props) {
     getCart();
   }, []);
 
-  //function Cart(get)
+ 
   const getCart = async () => {
     const storedToken = localStorage.getItem('authToken');
     try {
@@ -68,8 +65,7 @@ function AuthProviderWrapper(props) {
       console.error(error)
     }
   }
-  // fer un set cart cada vegada que cridis getCart
-  // declarar funcio updatecart () => getcart()
+ 
   const updateCart = async () => {
     try {
       await getCart()
@@ -78,8 +74,7 @@ function AuthProviderWrapper(props) {
     }
   }
   
-  return (
-    // exportaras nomes updatecart i cart 
+  return ( 
     <AuthContext.Provider value={{ user, isLoggedIn, isLoading, isAdmin, storeToken, authenticateUser, logOutUser, removeToken, getCart, updateCart, cartContext }}>
       {props.children}
     </AuthContext.Provider>

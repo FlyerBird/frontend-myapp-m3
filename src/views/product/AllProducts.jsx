@@ -53,11 +53,10 @@ export default function AllProducts() {
        }
 
        const addToCart = async (productId) => {
-        updateCart()
         await axios.post(`${process.env.REACT_APP_API_URL}/cart`, {productId}, { headers: { Authorization: `Bearer ${storedToken}` }})
-        // invocar updatecart() l'hauras de rebre a l'inici d'aquesta funcio, rebentho del usecontext
         toast('Added to Cart');
-        //navigate('/cart');
+        updateCart()
+        navigate('/cart');
        }
       
   return (
