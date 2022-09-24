@@ -18,8 +18,7 @@ export default function UserProfile() {
           }
         };
         getData();
-        // es-lint disable line
-      }, []);
+      }, [storedToken]);
       
 
      
