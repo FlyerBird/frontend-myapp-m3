@@ -18,7 +18,8 @@ export default function UserProfile() {
           }
         };
         getData();
-      }, [storedToken]);
+        // eslint-disable-next-line
+      }, []);
       
 
      
