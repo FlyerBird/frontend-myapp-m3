@@ -35,7 +35,7 @@ export default function Cart() {
   };
 
   return (
-    <div>
+    <div className='cartBG'>
       <div className='backFaq'>
         <motion.button 
           transition={{ duration: 1}}
@@ -64,7 +64,7 @@ export default function Cart() {
       </div>
     </div>
     })}
-    <div>Total : {totalAmount} </div>
+    <div>Total: <b>{totalAmount} €</b></div>
     <div>
       <button onClick={()=> navigate('/buyNow')} className='buyNow'>Buy now</button>
     </div>

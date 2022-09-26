@@ -64,7 +64,7 @@ export default function Home() {
       <div ref={contact} className="contact">
         <h3> CONTACT </h3>
         <h5> funride@funride.com</h5>
-        <h5> +34 633 333 333</h5>
+        <h5> +34 637 122 265</h5>
         <h5>
         <span>MADE WITH<span><img className='love' src='https://tudesign.co/wp-content/uploads/2022/03/heart.svg' alt='heart'/></span>BY CARLOS</span>
         </h5>
