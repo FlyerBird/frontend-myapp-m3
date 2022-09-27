@@ -7,8 +7,7 @@ This application is called 'funRide'. It is MOBILE FIRST web app used for acquir
 reputation for online selling quality high-performance surfskates.
 A good option for surf brands and surf stores to announce and sell their products."
 
-> Add a picture (logo, design, actual screen, gif, etc, whichever you prefer.)
-![](funRideHome.png)
+<img src='./public/funRideHome.png' />
 
 ---
 ## Instructions
