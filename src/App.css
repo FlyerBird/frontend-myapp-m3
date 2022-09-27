@@ -541,14 +541,13 @@ display: grid;
 }
 
 .searchBar .search{
-  
   display: flex;
   justify-content:flex-start;
   align-items: center;
   background-color:#aaaaaa;
   padding:0.5rem;
   border-radius: 1rem;
-  width: 14rem
+  width: 15rem
 }
 
 
