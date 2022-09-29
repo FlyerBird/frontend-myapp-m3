@@ -61,9 +61,9 @@ export default function CreateProduct() {
 
   return (
     <div className='createProduct'>
-    <div className='headerCreateProduct'>
-      <h2>Create Product</h2>
-    </div>
+      <div className='headerCreateProduct'>
+        <h2>Create Product</h2>
+      </div>
       <form onSubmit={handleSubmit}>
         <div className='createProductFormSections'>
           <input type="text" name="title" placeholder="Title" value={product.title} onChange={handleChange} />
@@ -87,7 +87,6 @@ export default function CreateProduct() {
         <div className='file-select' id='src-file1' >
           <input type="file" onChange={(e) => handleFileUpload(e)} />
         </div>
-        
         <button className='createProButton' type="submit">Save</button>
       </form>
     </div>

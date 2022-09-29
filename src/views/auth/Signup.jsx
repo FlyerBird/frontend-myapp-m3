@@ -8,7 +8,8 @@ export default function Signup() {
     username: '',
     email: '',
     imageProfile: ''
-  })
+  });
+
   const [password, setPassword] = useState('');
   const [passwordControl, setPasswordControl] = useState('');
   const [errorMessage, setErrorMessage] = useState(undefined);
@@ -46,7 +47,7 @@ export default function Signup() {
       setErrorMessage(undefined)
     }
     // eslint-disable-next-line
-  }, [passwordControl])
+  }, [passwordControl]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -61,30 +62,30 @@ export default function Signup() {
 
   return (
     <div className='signUp'>
-    <div className='headerSign'>
-      <h1>funRide</h1>
+      <div className='headerSign'>
+        <h1>funRide</h1>
         <div className='subtitleSign'>
           <h3>Sign up to buy the one </h3>
           <h3>that better suits you</h3>
         </div>
-    </div>
+      </div>
       <form onSubmit={handleSubmit}>
-      <div className='signUpFormSections'>
-        <input placeholder="Username" required type="text" name="username" value={user.username} onChange={handleChange} />
-      </div>
-      <div className='signUpFormSections'>
-        <input placeholder="Email" required type="email" name="email" value={user.email} onChange={handleChange} />
-      </div>
-      <div className='signUpFormSections'>
-        <input placeholder="Password" required type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value) } />
-      </div>
-      <div className='signUpFormSections'>
-        <input placeholder="Repeat password" required type="password" name="passwordControl" value={passwordControl} onChange={(e) => setPasswordControl(e.target.value)} />
-        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-      </div>
-      <div className='signUpFormSections'>
-      <input id='selectFile' type="file" onChange={(e) => handleFileUpload(e)} />
-      </div>
+        <div className='signUpFormSections'>
+          <input placeholder="Username" required type="text" name="username" value={user.username} onChange={handleChange} />
+        </div>
+        <div className='signUpFormSections'>
+          <input placeholder="Email" required type="email" name="email" value={user.email} onChange={handleChange} />
+        </div>
+        <div className='signUpFormSections'>
+          <input placeholder="Password" required type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value) } />
+        </div>
+        <div className='signUpFormSections'>
+          <input placeholder="Repeat password" required type="password" name="passwordControl" value={passwordControl} onChange={(e) => setPasswordControl(e.target.value)} />
+          {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+        </div>
+        <div className='signUpFormSections'>
+          <input id='selectFile' type="file" onChange={(e) => handleFileUpload(e)} />
+        </div>
         <button className='registerButton' type="submit">Sign up</button>
       </form>
       <div className='footerSign'>

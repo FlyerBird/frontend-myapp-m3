@@ -21,7 +21,7 @@ export default function Cart() {
     }
     setCartFromContext();
   }
-  ,[cartContext])
+  ,[cartContext]);
  
   const handleDelete = async (_id) => {
     console.log("id is", _id)
@@ -45,31 +45,31 @@ export default function Cart() {
         </motion.button>
       </div>
     <div className='Cart'>
-    <div className='checkout'>
-      <h4>Checkout {cart && cart.length} products</h4>
-    </div>
+      <div className='checkout'>
+        <h4>Checkout {cart && cart.length} products</h4>
+      </div>
       {cart && cart.map((product, i) => {
       return <div className='onEachProCart' key={product._id + i}>
         <div className='eachProductCart'>
           <div className='cartProductImg'>
             {Array.isArray(product.images) ? <img className='imgProductCart' src={product.images[0]} alt={`Pic of ${product.title}`} /> : <img className='imgProductCart' src={product.images} alt={`Pic of ${product.title}`} />}
           </div>
-        <div className='cartProductTxt'>
-          <p>{product.title}</p>
-          <p className='cartEachPrice'>{product.price}€</p>
-        </div>
-        <div className='cartRemoveButton'>
-          <button onClick={() => handleDelete(product._id)}><FontAwesomeIcon icon={faSquareXmark} /></button>
+          <div className='cartProductTxt'>
+            <p>{product.title}</p>
+            <p className='cartEachPrice'>{product.price}€</p>
+          </div>
+          <div className='cartRemoveButton'>
+            <button onClick={() => handleDelete(product._id)}><FontAwesomeIcon icon={faSquareXmark} /></button>
+          </div>
         </div>
       </div>
-    </div>
     })}
     <div>Total: <b>{totalAmount} €</b></div>
-    <div>
-      <button onClick={()=> navigate('/buyNow')} className='buyNow'>Buy now</button>
-    </div>
-    {!cart && <p>No products</p>}
-    </div>
+      <div>
+        <button onClick={()=> navigate('/buyNow')} className='buyNow'>Buy now</button>
+      </div>
+      {!cart && <p>No products</p>}
+      </div>
     </div>
   )
 }

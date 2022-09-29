@@ -3,7 +3,6 @@ import axios from 'axios';
 import TopNav from '../../components/TopNav';
 
 export default function UserProfile() {
-    
     const storedToken = localStorage.getItem('authToken')
     const [user, setUser] = useState("");
  
@@ -20,19 +19,17 @@ export default function UserProfile() {
         getData();
       }, [storedToken]);
       
-
-     
   return (
     <div className='userProfile'>
     <TopNav />
       {!user && <p>Loading...</p>}
       {user && (
         <div className='profileData'>
-        <h1> Hello {user.username}</h1>
-        <div>
-        <img src={user.imageProfile} alt={user.imageProfile}/>
-        </div>
-        <p>{user.email}</p>
+          <h1> Hello {user.username}</h1>
+          <div>
+            <img src={user.imageProfile} alt={user.imageProfile}/>
+          </div>
+          <p>{user.email}</p>
         </div>
       ) }
     </div>

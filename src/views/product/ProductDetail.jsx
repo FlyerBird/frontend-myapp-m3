@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretLeft, faCartArrowDown, faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { AuthContext } from '../../context/AuthContext'
 
-
 export default function Product() {
   const storedToken = localStorage.getItem('authToken')
     const { id } = useParams();
@@ -14,7 +13,6 @@ export default function Product() {
     const navigate = useNavigate();
     const { isAdmin, updateCart } = useContext(AuthContext);
   
-
     useEffect(() => {
         const getData = async () => {
           try {
@@ -37,7 +35,6 @@ export default function Product() {
         }
       };
 
-      
       const addToCart = async (productId) => {
         try{
           const cart = await axios.post(`${process.env.REACT_APP_API_URL}/cart`, {productId}, { headers: { Authorization: `Bearer ${storedToken}` }})
@@ -51,33 +48,30 @@ export default function Product() {
         }
        };
       
-
-
   return (
     <div className='productDetail'>
-    <div className='back'>
-      <button onClick={() => navigate(-1)}><FontAwesomeIcon icon={faCaretLeft} /></button>
-    </div>
+      <div className='back'>
+        <button onClick={() => navigate(-1)}><FontAwesomeIcon icon={faCaretLeft} /></button>
+      </div>
         {product && (
         <div className='detailPro'>
-        <div className='slider'>
-          {product.images.length > 1? product.images.map((img,i) => <img className='eachDI' key={i} width="300px" src={img} alt={`Pic of ${product.title}`} />) : <img width="300px" src={product.images} alt={`Pic of ${product.title}`} />}
-        </div>
-        <div className='detailText'>
-          <h3>{product.title}</h3>
-          <h4>TECHNICAL FEATURES</h4>
-          <p>{product.details}</p>
-          <p className='detailPrice'>{product.price} €</p>
+          <div className='slider'>
+            {product.images.length > 1? product.images.map((img,i) => <img className='eachDI' key={i} width="300px" src={img} alt={`Pic of ${product.title}`} />) : <img width="300px" src={product.images} alt={`Pic of ${product.title}`} />}
           </div>
-        <div className='detailProActions'>
-          {isAdmin&&<Link to= {`/edit/${id}`}><FontAwesomeIcon icon={faPenToSquare} />Edit Product</Link> }
-          {isAdmin&&<button className='deleteDetailButton' onClick={handleDelete}><FontAwesomeIcon icon={faTrash} /> Delete product</button> }
-          {!isAdmin&&<button className='buyDetailButton' onClick={()=> addToCart(product._id) } type='submit'><b><FontAwesomeIcon icon={faCartArrowDown} /> Cart</b></button>}
-        </div>
+          <div className='detailText'>
+            <h3>{product.title}</h3>
+            <h4>TECHNICAL FEATURES</h4>
+            <p>{product.details}</p>
+            <p className='detailPrice'>{product.price} €</p>
+          </div>
+          <div className='detailProActions'>
+            {isAdmin&&<Link to= {`/edit/${id}`}><FontAwesomeIcon icon={faPenToSquare} />Edit Product</Link> }
+            {isAdmin&&<button className='deleteDetailButton' onClick={handleDelete}><FontAwesomeIcon icon={faTrash} /> Delete product</button> }
+            {!isAdmin&&<button className='buyDetailButton' onClick={()=> addToCart(product._id) } type='submit'><b><FontAwesomeIcon icon={faCartArrowDown} /> Cart</b></button>}
+          </div>
         </div>
         )}
       {!product && <p>Product not found</p>}
-    
     </div>
   )
 }

@@ -12,13 +12,14 @@ export default function Faq() {
 
   return (
     <div>
-    <div className='backFaq'>
-      <motion.button 
-      transition={{ duration: 1}}
-      initial={{ x: 400}}
-      animate={{ x: 0}}
-      onClick={() => navigate(-1)}><h1 className='faqh1'>funRide</h1></motion.button>
-    </div>
+      <div className='backFaq'>
+        <motion.button 
+        transition={{ duration: 1}}
+        initial={{ x: 400}}
+        animate={{ x: 0}}
+        onClick={() => navigate(-1)}><h1 className='faqh1'>funRide</h1>
+        </motion.button>
+      </div>
     <div className='faq'>
         <h2> Frequently asked Questions about Surfskating </h2>
         <motion.div onClick={() => setOpen(!open) } className='faqCard'>

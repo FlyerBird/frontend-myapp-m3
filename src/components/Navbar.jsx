@@ -7,12 +7,11 @@ import { faHouse, faRightToBracket, faUserPlus, faHandPeace, faGear, faCartShopp
 export default function Navbar() {
   const { isLoggedIn, user, isAdmin, cartContext } = useContext(AuthContext);
   const [cart, setCart] = useState(null);
-// de context rebras cart, useeffect lunic que fa es agafar cart i fer setCart(cart)
+
   useEffect (() => {
     setCart(cartContext)
   }
   ,[cartContext])
-  // en l'array posarem cart
 
   return (
     <div className='navbar'>

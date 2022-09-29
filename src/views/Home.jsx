@@ -6,7 +6,6 @@ import { faAnglesUp } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 
-
 export default function Home() {
   const about = useRef(null);
   const contact = useRef(null);
@@ -43,33 +42,33 @@ export default function Home() {
        <motion.h3 initial={{scale: 0.2}} transition={{ duration: 1}} animate={{ scale: 1 }}>SURFSKATES</motion.h3>
       </div>
       <div className='mainBoxHome'>
-      <div className='subHeader'>
-        <h5 onClick={() => scrollToSection(about)} className="linkAbout">About</h5>
-        <Link className='faqLink' to = { '/faq'}> FAQ</Link>
-        <h5 onClick={() => scrollToSection(contact)} className="linkAbout">Contact</h5>
-      </div>
+        <div className='subHeader'>
+          <h5 onClick={() => scrollToSection(about)} className="linkAbout">About</h5>
+          <Link className='faqLink' to = { '/faq'}> FAQ</Link>
+          <h5 onClick={() => scrollToSection(contact)} className="linkAbout">Contact</h5>
+        </div>
       <AllProducts />
       <div> {showScrollTopButton && (
         <FontAwesomeIcon className="goTop" onClick={scrollTop} icon={faAnglesUp} />
        )}
       </div>
       <div className='footer'>
-      <div ref={about} className="about">
-        <h3>ABOUT</h3>
-        <p> “funRide SURFSKATES is a family driven company based in Catalonia and has built a 
-        reputation for online selling quality high-performance surfskates.
-        A good option for surf brands and surf stores to announce and sell their products."
-        </p>
+        <div ref={about} className="about">
+          <h3>ABOUT</h3>
+          <p> “funRide SURFSKATES is a family driven company based in Catalonia and has built a 
+          reputation for online selling quality high-performance surfskates.
+          A good option for surf brands and surf stores to announce and sell their products."
+          </p>
       </div>
-      <div ref={contact} className="contact">
-        <h3> CONTACT </h3>
-        <h5> funride@funride.com</h5>
-        <h5> +34 637 122 265</h5>
-        <h5>
-        <span>MADE WITH<span><img className='love' src='https://tudesign.co/wp-content/uploads/2022/03/heart.svg' alt='heart'/></span>BY CARLOS</span>
-        </h5>
-      </div>
-      </div>
+          <div ref={contact} className="contact">
+            <h3> CONTACT </h3>
+            <h5> funride@funride.com</h5>
+            <h5> +34 637 122 265</h5>
+            <h5>
+            <span>MADE WITH<span><img className='love' src='https://tudesign.co/wp-content/uploads/2022/03/heart.svg' alt='heart'/></span>BY CARLOS</span>
+            </h5>
+          </div>
+        </div>
       </div>
     </div>
   )

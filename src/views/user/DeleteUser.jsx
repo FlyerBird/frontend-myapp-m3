@@ -34,21 +34,17 @@ export default function DeleteUser() {
       </div>
       <div className='deleteAcc'>
       <FontAwesomeIcon className='exclamationIcon' icon={faTriangleExclamation} />
-      <div className='delAccText'>
-      <h2>Are you sure you want to delete your account?</h2>
-      <div className='delAccSub'>
-      <h3>Delete your funRide Account</h3>
-        <p>
-        When you delete your account, your profile and all your data will be permanently removed.
-        </p>
+        <div className='delAccText'>
+          <h2>Are you sure you want to delete your account?</h2>
+        <div className='delAccSub'>
+          <h3>Delete your funRide Account</h3>
+          <p>When you delete your account, your profile and all your data will be permanently removed.</p>
       </div>
-      <div className='delAccButton'>
+        <div className='delAccButton'>
           <button onClick={handleDelete}>Delete Account</button>
         </div>
-      </div>
-     
+        </div>
       </div>
     </div>
-   
   )
 }

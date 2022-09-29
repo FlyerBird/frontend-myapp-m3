@@ -66,16 +66,15 @@ export default function AllProducts() {
              <input type="text" value={searchProduct} placeholder="What are you looking for?" onChange={handleSearch} />
         </div>
         <div className='sort'>
-        <button className='sortByPrice' onClick={handleSort}> Sort by Price {!showLinks ? <FontAwesomeIcon className='sortIcon' icon={faChevronDown} /> : <FontAwesomeIcon icon={faChevronUp} />}</button>
+            <button className='sortByPrice' onClick={handleSort}> Sort by Price {!showLinks ? <FontAwesomeIcon className='sortIcon' icon={faChevronDown} /> : <FontAwesomeIcon icon={faChevronUp} />}</button>
         <div className='sortPrice' id={showLinks ? "hidden" : ""}>
             <button onClick={handleCheaper}>Low to High</button>
             <button onClick={handleMoreExpensive}>High to Low</button>
         </div>
         </div>
-       </div>
+    </div>
 
     <div className='allProducts'>
-   
         {filteredProducts && filteredProducts.map(product => {
             return (
                 <div className='eachProduct' key={product._id} >
