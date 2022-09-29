@@ -2,7 +2,7 @@
 
 ## Description
 
-This application is called 'funRide'. It is MOBILE FIRST web app used for acquire the best surfskates on the market.
+This application is called 'funRide'. It is a MOBILE FIRST web app used for acquire the best surfskates on the market.
 “funRide SURFSKATES is a family driven company based in Catalonia and has built a 
 reputation for online selling quality high-performance surfskates.
 A good option for surf brands and surf stores to announce and sell their products."
